@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b10thbscfd638"
-path="res://.godot/imported/santa_companha.png-89f8cd0b5007a9ff0c494868076c220a.ctex"
+uid="uid://d0rm08pmaduif"
+path="res://.godot/imported/companha.png-e4b9792640dd5ba49d8866175dd9ed32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/santa_companha.png"
-dest_files=["res://.godot/imported/santa_companha.png-89f8cd0b5007a9ff0c494868076c220a.ctex"]
+source_file="res://Resources/Sprites/companha.png"
+dest_files=["res://.godot/imported/companha.png-e4b9792640dd5ba49d8866175dd9ed32.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ondiaqe1ynl"]
+[gd_scene load_steps=9 format=3 uid="uid://b0ondiaqe1ynl"]
 
+[ext_resource type="Script" path="res://Scenes/root.gd" id="1_o2lf6"]
 [ext_resource type="Texture2D" uid="uid://bus3uf8rat1qj" path="res://Resources/Sprites/tileset.png" id="2_tf33w"]
 [ext_resource type="Script" path="res://Scenes/Labirinto.gd" id="3_5wgpc"]
+[ext_resource type="PackedScene" uid="uid://bc0wuhq18luuo" path="res://Scenes/companha.tscn" id="4_5c7ub"]
 [ext_resource type="PackedScene" uid="uid://2m52enh5ssl" path="res://Scenes/town.tscn" id="4_e36co"]
 [ext_resource type="PackedScene" uid="uid://dst54fuh7y0o7" path="res://Scenes/player.tscn" id="4_r350v"]
 
@@ -22,10 +24,14 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_xvltl")
 
 [node name="Root" type="Node2D"]
+script = ExtResource("1_o2lf6")
+player_scene = ExtResource("4_r350v")
+town_scene = ExtResource("4_e36co")
+companha_scene = ExtResource("4_5c7ub")
 
 [node name="Labirinto" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_5q8pe")
 format = 2
 script = ExtResource("3_5wgpc")
-player_scene = ExtResource("4_r350v")
-town_scene = ExtResource("4_e36co")
+
+[connection signal="maze_built" from="Labirinto" to="." method="_on_labirinto_maze_built"]

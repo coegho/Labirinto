@@ -1,7 +1,18 @@
 extends CharacterBody2D
 
 
-@export var speed = 10000.0
+@export var speed_blocks_per_second = 4
+@export var seconds_until_full_speed: float = 0.25
+@export var seconds_until_fully_stopped = 0.15
+var speed: float:
+	get:
+		return speed_blocks_per_second*32
+var acceleration: float:
+	get:
+		return speed/seconds_until_full_speed
+var deceleration: float:
+	get:
+		return speed/seconds_until_fully_stopped
 @onready var animation_player = $Sprite2D/AnimationPlayer
 var last_side = Vector2i.RIGHT
 
@@ -16,7 +27,7 @@ func _physics_process(delta):
 		direction = direction.normalized()
 	
 	if direction:
-		velocity = direction * speed * delta
+		velocity = velocity.move_toward(direction * speed, acceleration * delta)
 		if velocity.x < 0:
 			last_side = Vector2i.LEFT
 		elif velocity.x > 0:
@@ -30,6 +41,6 @@ func _physics_process(delta):
 			animation_player.play("idle_left")
 		else:
 			animation_player.play("idle_right")
-		velocity = velocity.move_toward(Vector2.ZERO, speed * delta)
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 
 	move_and_slide()

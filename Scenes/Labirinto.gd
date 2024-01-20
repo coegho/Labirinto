@@ -1,22 +1,41 @@
 extends TileMap
 
+class_name Labirinto
+
 const MAZE_WIDTH: int = 8
 const MAZE_HEIGHT: int = 8
 
 @export var wall_coords : Vector2i = Vector2i(0, 0)
 @export var road_coords : Vector2i = Vector2i(1, 0)
-@export var player_scene: PackedScene
-@export var town_scene: PackedScene
+
+@onready var astar_node: AStarGrid2D = AStarGrid2D.new()
+
+var dead_ends : Array[Vector2i] = []
+
+signal maze_built(starting_point: Vector2, dead_ends: Array[Vector2])
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var starting_point: Vector2i = generate_maze()
-	var town = town_scene.instantiate()
-	town.position = map_to_local(maze_position_to_tilemap_position(starting_point))
-	add_child(town)
-	var player = player_scene.instantiate()
-	player.position = map_to_local(maze_position_to_tilemap_position(starting_point))
-	add_child(player)
+	build_pathfinding()
+	maze_built.emit(map_to_local(maze_position_to_tilemap_position(starting_point)),
+		dead_ends.map(maze_position_to_tilemap_position).map(map_to_local))
+
+func get_point_path(from: Vector2, to: Vector2):
+	var from_point: Vector2i = local_to_map(to_local(from))
+	var to_point: Vector2i = local_to_map(to_local(to))
+	return astar_node.get_point_path(from_point, to_point)
+
+func build_pathfinding():
+	PathfinderManager.astar_node = astar_node
+	astar_node.region = Rect2i(Vector2i.ZERO, Vector2i((MAZE_WIDTH+1)*2+1, (MAZE_HEIGHT+1)*2+1))
+	astar_node.cell_size = tile_set.tile_size
+	astar_node.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	astar_node.update()
+	
+	var obstacles = get_used_cells_by_id(0, -1, wall_coords)
+	for obstacle in obstacles:
+		astar_node.set_point_solid(obstacle)
 
 
 func generate_maze() -> Vector2i:
@@ -33,6 +52,7 @@ func generate_maze() -> Vector2i:
 		var move = next_move(current)
 		if move == Vector2i.ZERO:
 			if path.size() > 0:
+				dead_ends.append(current)
 				current = path.pop_back() #backtracking
 				continue
 			else:
