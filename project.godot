@@ -21,11 +21,21 @@ PathfinderManager="*res://pathfinder_manager.gd"
 
 [display]
 
+window/size/viewport_width=608
+window/size/viewport_height=608
 window/size/mode=2
-window/size/window_width_override=1152
-window/size/window_height_override=648
+window/size/window_width_override=608
+window/size/window_height_override=608
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [rendering]
 

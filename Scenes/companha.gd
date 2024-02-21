@@ -8,11 +8,9 @@ class_name Companha
 
 var pending_path: Array = []
 
-var player
+var dead_ends : Array = []
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var player
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,4 +27,10 @@ func _physics_process(delta):
 				animation_player.play("walking_left")
 			position = position.move_toward(next, speed * delta)
 	else:
-		pending_path = PathfinderManager.get_point_path_global(position, player.position)
+		#pending_path = PathfinderManager.get_point_path_global(position, player.position)
+		pending_path = PathfinderManager.get_point_path_global(position, dead_ends.pick_random())
+
+
+func _on_area_2d_body_entered(body):
+	if body.has_method("being_catched") and !body.get_salted():
+		body.being_catched()

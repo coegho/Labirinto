@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+class_name Player
 
 @export var speed_blocks_per_second = 4
 @export var seconds_until_full_speed: float = 0.25
@@ -15,6 +16,14 @@ var deceleration: float:
 		return speed/seconds_until_fully_stopped
 @onready var animation_player = $Sprite2D/AnimationPlayer
 var last_side = Vector2i.RIGHT
+
+var town
+var grabbed_object = null
+var _salted = false
+
+func _process(_delta):
+	if grabbed_object != null and grabbed_object.has_method("carry"):
+		grabbed_object.carry(position + Vector2.UP * 8)
 
 func _physics_process(delta):
 
@@ -32,15 +41,54 @@ func _physics_process(delta):
 			last_side = Vector2i.LEFT
 		elif velocity.x > 0:
 			last_side = Vector2i.RIGHT
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+	play_animation(direction)
+	move_and_slide()
+
+func play_animation(direction):
+	var is_grabbing = grabbed_object != null
+	if direction:
 		if last_side == Vector2i.LEFT:
-			animation_player.play("walk_left")
+			if is_grabbing:
+				animation_player.play("carry_left")
+			else:
+				animation_player.play("walk_left")
 		else:
-			animation_player.play("walk_right")
+			if is_grabbing:
+				animation_player.play("carry_right")
+			else:
+				animation_player.play("walk_right")
 	else:
 		if last_side == Vector2i.LEFT:
-			animation_player.play("idle_left")
+			if is_grabbing:
+				animation_player.play("idle_carry_left")
+			else:
+				animation_player.play("idle_left")
 		else:
-			animation_player.play("idle_right")
-		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
+			if is_grabbing:
+				animation_player.play("idle_carry_right")
+			else:
+				animation_player.play("idle_right")
 
-	move_and_slide()
+func being_catched():
+	if grabbed_object != null:
+		grabbed_object.drop(null)
+		grabbed_object = null
+	position = town.position
+
+func grab(object):
+	if grabbed_object != null:
+		grabbed_object.drop(object)
+	grabbed_object = object
+	pass
+
+func enter_town():
+	if grabbed_object != null and grabbed_object.has_method("entering_town"):
+		grabbed_object.entering_town()
+
+func set_salted(salted: bool):
+	_salted = salted
+
+func get_salted() -> bool:
+	return _salted
