@@ -32,5 +32,5 @@ func _physics_process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if body.has_method("being_catched") and !body.get_salted():
+	if body.has_method("being_catched") and !body.is_salted():
 		body.being_catched()

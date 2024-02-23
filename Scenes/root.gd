@@ -5,7 +5,12 @@ extends Node2D
 @export var companha_scene: PackedScene
 @export var urco_scene: PackedScene
 @export var cross_scene: PackedScene
+@export var burleiro_scene: PackedScene
+
 @export var herb_scene: PackedScene
+@export var vacaloura_scene: PackedScene
+@export var salt_scene: PackedScene
+@export var salt_circle_scene: PackedScene
 
 @onready var maze: Labirinto = $Labirinto
 @onready var p_cam: PhantomCamera2D = $PhantomCamera2D
@@ -30,14 +35,30 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 	if crossings.size() > 1:
 		var urco = instantiate_entity(urco_scene, crossings.pick_random())
 		urco.crossings = crossings
+	dead_ends.shuffle()
 	if dead_ends.size() > 0:
 		var companha: Companha = instantiate_entity(companha_scene, dead_ends[0])
 		companha.dead_ends = dead_ends
 		companha.player = player
+	var total_herbs = 0
+	var it = 0
 	for dead_end in dead_ends:
-		var herb: Herb = instantiate_entity(herb_scene, dead_end)
-		herb.saved_herb.connect(_add_herb)
-	ui.set_herb_score(0, dead_ends.size())
+		if total_herbs < 1:
+			var herb: Herb = instantiate_entity(herb_scene, dead_end)
+			herb.saved_herb.connect(_add_herb)
+			total_herbs += 1
+		else:
+			match it:
+				0:
+					var salt : Salt = instantiate_entity(salt_scene, dead_end)
+					salt.salt_used.connect(_on_salt_used)
+				1:
+					instantiate_entity(vacaloura_scene, dead_end)
+				2:
+					var burleiro : Burleiro = instantiate_entity(burleiro_scene, dead_end)
+					burleiro.dead_ends = dead_ends
+			it = (it + 1) % 3
+	ui.set_herb_score(0, total_herbs)
 
 func instantiate_entity(entity_scene: PackedScene, entity_position: Vector2) -> Node:
 	var entity = entity_scene.instantiate()
@@ -47,3 +68,6 @@ func instantiate_entity(entity_scene: PackedScene, entity_position: Vector2) -> 
 
 func _add_herb():
 	ui.add_herb_score(1)
+
+func _on_salt_used(position_salt : Vector2):
+	instantiate_entity(salt_circle_scene, position_salt)

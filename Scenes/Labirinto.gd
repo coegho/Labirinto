@@ -14,6 +14,10 @@ var road_cells: Array[Vector2i]
 
 signal maze_built(starting_point: Vector2, dead_ends: Array[Vector2], crossings: Array[Vector2])
 
+const WALL_TERRAIN = 0
+const ROAD_TERRAIN = 1
+const TOWN_TERRAIN = 2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var starting_point: Vector2i = generate_maze()
@@ -152,8 +156,8 @@ func build_town(town_maze_position: Vector2i) -> Array:
 	movements =  movements.filter(func (movement): return road_cells.has(tilemap_position + movement))
 	var town_cells: Array = movements.map(func (movement): return tilemap_position + movement)
 	town_cells.append(tilemap_position)
-	
-	set_cells_terrain_connect(0, town_cells, 0, 2)
+	print(town_cells)
+	set_cells_terrain_connect(0, town_cells, 0, TOWN_TERRAIN)
 	return town_cells
 
 func generate_initial_walls() -> void:
@@ -162,7 +166,7 @@ func generate_initial_walls() -> void:
 		for i in (MAZE_WIDTH+1)*2+1:
 			cells.append(Vector2i(i, j))
 			#set_cell(0, Vector2i(i, j), 0, Vector2i(0, 0))
-	set_cells_terrain_connect(0, cells, 0, 0, false)
+	set_cells_terrain_connect(0, cells, 0, WALL_TERRAIN, false)
 
 func apply_autotile() -> void:
-	set_cells_terrain_connect(0, road_cells, 0, 1)
+	set_cells_terrain_connect(0, road_cells, 0, ROAD_TERRAIN)

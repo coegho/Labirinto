@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://caod3elqkhklb"]
+
+[ext_resource type="PackedScene" uid="uid://cy4qisq44rknp" path="res://Scenes/Items/item.tscn" id="1_aw67d"]
+[ext_resource type="Script" path="res://Scenes/Items/salt.gd" id="1_uyhsi"]
+[ext_resource type="Texture2D" uid="uid://bh5imkilu2r5o" path="res://Resources/Sprites/salt.png" id="2_hghuw"]
+
+[node name="Salt" type="Node2D"]
+script = ExtResource("1_uyhsi")
+
+[node name="Item" parent="." instance=ExtResource("1_aw67d")]
+usable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_hghuw")
