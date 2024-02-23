@@ -4,6 +4,6 @@ class_name Salt
 
 signal salt_used(position : Vector2)
 
-func use(position_used : Vector2):
-	salt_used.emit(position_used)
+func use(player):
+	salt_used.emit(player.global_position)
 	queue_free()

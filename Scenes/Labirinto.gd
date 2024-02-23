@@ -12,7 +12,7 @@ const MAZE_HEIGHT: int = 8
 
 var road_cells: Array[Vector2i]
 
-signal maze_built(starting_point: Vector2, dead_ends: Array[Vector2], crossings: Array[Vector2])
+signal maze_built(starting_point: Vector2, dead_ends: Array[Vector2], crossings: Array[Vector2], item_positions: Array[Vector2])
 
 const WALL_TERRAIN = 0
 const ROAD_TERRAIN = 1
@@ -23,9 +23,16 @@ func _ready():
 	var starting_point: Vector2i = generate_maze()
 	var town_cells = build_town(starting_point)
 	build_pathfinding(town_cells)
+	var dead_ends = find_dead_ends()
+	var crossings = find_crossings(starting_point)
+	var item_positions = get_item_positions(
+		road_cells,
+		dead_ends.map(maze_position_to_tilemap_position),
+		crossings.map(maze_position_to_tilemap_position))
 	maze_built.emit(map_to_local(maze_position_to_tilemap_position(starting_point)),
-		find_dead_ends().map(maze_position_to_tilemap_position).map(map_to_local),
-		find_crossings(starting_point).map(maze_position_to_tilemap_position).map(map_to_local))
+		dead_ends.map(maze_position_to_tilemap_position).map(map_to_local),
+		crossings.map(maze_position_to_tilemap_position).map(map_to_local),
+		item_positions.map(map_to_local))
 
 func get_point_path(from: Vector2, to: Vector2):
 	var from_point: Vector2i = local_to_map(to_local(from))
@@ -170,3 +177,11 @@ func generate_initial_walls() -> void:
 
 func apply_autotile() -> void:
 	set_cells_terrain_connect(0, road_cells, 0, ROAD_TERRAIN)
+
+func get_item_positions(road_cells: Array, dead_ends: Array, crossings: Array) -> Array:
+	var valid_cells: Array = []
+	dead_ends = dead_ends.slice(2)
+	for cell in road_cells:
+		if not cell in dead_ends and not cell in crossings:
+			valid_cells.append(cell)
+	return valid_cells

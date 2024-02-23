@@ -1,4 +1,4 @@
-extends Node2D
+extends AnimatableBody2D
 
 class_name Urco
 
@@ -40,7 +40,14 @@ func attack_mode(delta):
 		animation_player.play("run_right")
 	else:
 		animation_player.play("run_left")
-	position = position.move_toward(target, attack_speed * delta)
+	#position = position.move_toward(target, attack_speed * delta)
+	if speed * delta < move.length():
+		move = move.normalized() * speed * delta
+	var collision = move_and_collide(move)
+	if collision != null:
+		current_state = urco_states.WAIT
+		pending_path = []
+		timer.start()
 	
 
 func walk_mode(delta):
@@ -66,7 +73,10 @@ func walk_mode(delta):
 				animation_player.play("walk_right")
 			else:
 				animation_player.play("walk_left")
-			position = position.move_toward(next, speed * delta)
+			#position = position.move_toward(next, speed * delta)
+			if speed * delta < move.length():
+				move = move.normalized() * speed * delta
+			move_and_collide(move)
 	else:
 		pending_path = PathfinderManager.get_point_path_global(position, crossings.pick_random())
 

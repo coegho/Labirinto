@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://51byldyhucnv"]
+
+[ext_resource type="Script" path="res://Scenes/Items/vasoira.gd" id="1_i8ajw"]
+[ext_resource type="PackedScene" uid="uid://cy4qisq44rknp" path="res://Scenes/Items/item.tscn" id="1_vdchu"]
+[ext_resource type="Texture2D" uid="uid://ds6q1bwm5yimv" path="res://Resources/Sprites/vasoira.png" id="2_u7hfh"]
+
+[node name="Vasoira" type="Node2D"]
+script = ExtResource("1_i8ajw")
+
+[node name="Item" parent="." instance=ExtResource("1_vdchu")]
+usable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u7hfh")

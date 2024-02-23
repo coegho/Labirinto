@@ -32,9 +32,9 @@ func drop(switch):
 		grabbed_by = null
 
 
-func use(position_used : Vector2):
+func use(player: Player):
 	if get_parent().has_method("use"):
-		get_parent().use(position_used)
+		get_parent().use(player)
 		using_object.emit()
 
 func carry(new_position: Vector2):

@@ -9,7 +9,8 @@ radius = 16.0
 [node name="Town" type="Node2D"]
 script = ExtResource("1_nqxjm")
 
-[node name="Vila" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
 texture = ExtResource("1_4c2gs")
 
 [node name="Area2D" type="Area2D" parent="."]
