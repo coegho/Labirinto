@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwaqkevwind3s"]
+
+[ext_resource type="Script" path="res://Scenes/game_camera.gd" id="1_k6hd0"]
+[ext_resource type="Script" path="res://Scenes/FlashEffect.gd" id="2_w5spc"]
+[ext_resource type="Texture2D" uid="uid://bwwhw1fln87sl" path="res://Resources/Sprites/area_square_white.png" id="3_2vsk4"]
+
+[node name="GameCamera" type="Camera2D"]
+zoom = Vector2(2.5, 2.5)
+limit_left = 1
+limit_top = 2
+limit_right = 1
+limit_bottom = 2
+editor_draw_limits = true
+script = ExtResource("1_k6hd0")
+
+[node name="FlashEffect" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_w5spc")
+
+[node name="FlashSprite" type="TextureRect" parent="FlashEffect"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2vsk4")
+
+[node name="Timer" type="Timer" parent="FlashEffect"]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="timeout" from="FlashEffect/Timer" to="FlashEffect" method="_on_timer_timeout"]

@@ -11,6 +11,7 @@ script = ExtResource("1_nqxjm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
+z_as_relative = false
 texture = ExtResource("1_4c2gs")
 
 [node name="Area2D" type="Area2D" parent="."]

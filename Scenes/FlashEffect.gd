@@ -1,7 +1,7 @@
-extends Node2D
+extends CanvasLayer
 
 @onready var timer : Timer = $Timer
-@onready var sprite : Sprite2D = $FlashSprite
+@onready var sprite : TextureRect = $FlashSprite
 
 @export var speed = 15
 var is_flashing : bool = false
@@ -22,7 +22,3 @@ func flash():
 func _on_timer_timeout():
 	is_flashing = false
 	sprite.modulate.a = 0
-
-
-func _on_player_1_flash_screen():
-	flash()

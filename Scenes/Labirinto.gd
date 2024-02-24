@@ -5,9 +5,6 @@ class_name Labirinto
 const MAZE_WIDTH: int = 8
 const MAZE_HEIGHT: int = 8
 
-@export var wall_coords : Vector2i = Vector2i(0, 0)
-@export var road_coords : Vector2i = Vector2i(1, 0)
-
 @onready var astar_node: AStarGrid2D = AStarGrid2D.new()
 
 var road_cells: Array[Vector2i]
@@ -109,7 +106,6 @@ func is_legal_position(testing_position: Vector2i) -> bool:
 
 func has_wall(maze_position: Vector2i) -> bool:
 	return not road_cells.has(maze_position_to_tilemap_position(maze_position))
-	#return get_cell_atlas_coords(0, maze_position_to_tilemap_position(testing_position)) == wall_coords
 
 func maze_position_to_tilemap_position(maze_position: Vector2i) -> Vector2i:
 	return maze_position * 2 + Vector2i.ONE

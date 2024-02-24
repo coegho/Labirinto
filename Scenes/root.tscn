@@ -9,6 +9,3 @@
 script = ExtResource("1_1i2q7")
 
 [node name="Level" parent="." instance=ExtResource("1_smhhv")]
-
-[connection signal="herb_collected" from="Level" to="Score" method="_on_level_herb_collected"]
-[connection signal="player_catched" from="Level" to="Score" method="_on_level_player_catched"]
