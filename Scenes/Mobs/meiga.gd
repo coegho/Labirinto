@@ -19,8 +19,7 @@ var state: MeigaState = MeigaState.FLYING
 func _ready():
 	flying_height = - sprite.position.y
 	center_point = global_position
-	rotating_path = calculate_circle_path(center_point, 5*32).map(func (point): return point + center_point)
-	print(rotating_path)
+	rotating_path = calculate_circle_path(center_point, 5*32)
 
 func _physics_process(delta):
 	if state == MeigaState.FLYING:
@@ -32,6 +31,7 @@ func _physics_process(delta):
 
 func flying_process(delta):
 	sprite.position = sprite.position.move_toward(Vector2(0, -flying_height), speed * delta)
+	catching_area.monitoring = false
 	
 	if current_path_index >= rotating_path.size():
 		current_path_index = current_path_index % rotating_path.size()
@@ -49,6 +49,7 @@ func flying_process(delta):
 
 func chasing_process(delta):
 	sprite.position = sprite.position.move_toward(Vector2(0, -flying_height), speed * delta)
+	catching_area.monitoring = false
 	
 	if chased_player == null or is_player_in_town(chased_player.global_position):
 		chased_player = null
@@ -73,8 +74,8 @@ func descending_process(delta):
 
 func calculate_circle_path(center: Vector2, radius: float) -> Array:
 	var path: Array[Vector2] = []
-	for i in range(0, 360, 360/16):
-		path.append((Vector2.RIGHT * radius).rotated(deg_to_rad(i)))
+	for i in range(0, 360, 360.0/16):
+		path.append((Vector2.RIGHT * radius).rotated(deg_to_rad(i)) + center)
 	return path
 
 func player_used_broom(player: Player):

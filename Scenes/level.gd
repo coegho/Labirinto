@@ -19,7 +19,9 @@ extends Node2D
 
 @onready var ui: UI = %UI
 
-var player
+signal player_catched(player_number: int)
+signal herb_collected(player_number: int)
+signal all_herbs_collected()
 
 func _on_labirinto_maze_built(starting_point: Vector2, dead_ends: Array, crossings: Array, item_positions: Array):
 	call_deferred("instantiate_entities", starting_point, dead_ends, crossings, item_positions)
@@ -28,9 +30,16 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 	dead_ends.remove_at(dead_ends.find(starting_point))
 	var town = instantiate_entity(town_scene, starting_point)
 	#player = instantiate_entity(player_scene, starting_point)
+	var player
 	player = $Player1
-	player.position = starting_point
+	player.global_position = starting_point + Vector2.LEFT*8
 	player.town = town
+	player.velocity = Vector2.ZERO
+	player = $Player2
+	player.global_position = starting_point + Vector2.RIGHT*8
+	player.town = town
+	player.velocity = Vector2.ZERO
+	
 	var crosses = []
 	for crossing in crossings:
 		crosses.append(instantiate_entity(cross_scene, crossing))
@@ -51,7 +60,6 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 	if dead_ends.size() > 0:
 		var companha: Companha = instantiate_entity(companha_scene, dead_ends[0])
 		companha.dead_ends = dead_ends
-		companha.player = player
 	
 	var center = Vector2((maze.MAZE_WIDTH+1)*32, (maze.MAZE_HEIGHT+1)*32)
 	var meiga : Meiga = instantiate_entity(meiga_scene, center)
@@ -63,6 +71,7 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 		if total_herbs < 7:
 			var herb: Herb = instantiate_entity(herb_scene, dead_end)
 			herb.saved_herb.connect(_add_herb)
+			herb.sprite.frame = total_herbs
 			total_herbs += 1
 		else:
 			var burleiro : Burleiro = instantiate_entity(burleiro_scene, dead_end)
@@ -76,8 +85,10 @@ func instantiate_entity(entity_scene: PackedScene, entity_position: Vector2) -> 
 	add_child(entity)
 	return entity
 
-func _add_herb():
-	ui.add_herb_score(1)
+func _add_herb(herb: Herb, player: Player):
+	herb_collected.emit(player.player_number)
+	if ui.add_herb_score(herb):
+		all_herbs_collected.emit()
 
 func _on_salt_used(position_salt : Vector2):
 	instantiate_entity(salt_circle_scene, position_salt)
@@ -85,8 +96,12 @@ func _on_salt_used(position_salt : Vector2):
 func get_final_item_positions(item_positions: Array, number: int) -> Array[Vector2]:
 	var final_item_positions: Array[Vector2] = []
 	for i in range(number):
-		var position = item_positions.pick_random()
-		while final_item_positions.has(position):
-			position = item_positions.pick_random()
-		final_item_positions.append(position)
+		var item_position = item_positions.pick_random()
+		while final_item_positions.has(item_position):
+			item_position = item_positions.pick_random()
+		final_item_positions.append(item_position)
 	return final_item_positions
+
+
+func _on_player_catched(player: Player):
+	player_catched.emit(player.player_number)

@@ -1,14 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://d230i8gfdyxl3"]
+[gd_scene load_steps=10 format=3 uid="uid://d230i8gfdyxl3"]
 
 [ext_resource type="Texture2D" uid="uid://dstud4cgg6bd6" path="res://Resources/Sprites/herbs.png" id="1_1vt1v"]
 [ext_resource type="Script" path="res://Scenes/ui.gd" id="1_xjsi6"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_dih32"]
-font_size = 25
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywvvn"]
 atlas = ExtResource("1_1vt1v")
 region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ltvtd"]
+atlas = ExtResource("1_1vt1v")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7dvp"]
+atlas = ExtResource("1_1vt1v")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpjus"]
+atlas = ExtResource("1_1vt1v")
+region = Rect2(0, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k05oh"]
+atlas = ExtResource("1_1vt1v")
+region = Rect2(10, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6vbe"]
+atlas = ExtResource("1_1vt1v")
+region = Rect2(20, 10, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75h2y"]
+atlas = ExtResource("1_1vt1v")
+region = Rect2(0, 20, 10, 10)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_xjsi6")
@@ -33,24 +54,80 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="FlowContainer" type="FlowContainer" parent="Control/MarginContainer"]
+[node name="VFlowContainer" type="VFlowContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-vertical = true
 
-[node name="Label" type="Label" parent="Control/MarginContainer/FlowContainer"]
+[node name="Herb1" type="TextureRect" parent="Control/MarginContainer/VFlowContainer"]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = " 0/0"
-label_settings = SubResource("LabelSettings_dih32")
-
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/FlowContainer"]
+modulate = Color(0, 0, 0, 1)
 clip_contents = true
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 texture = SubResource("AtlasTexture_ywvvn")
+
+[node name="Herb2" type="TextureRect" parent="Control/MarginContainer/VFlowContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_ltvtd")
+
+[node name="Herb3" type="TextureRect" parent="Control/MarginContainer/VFlowContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_t7dvp")
+
+[node name="Herb4" type="TextureRect" parent="Control/MarginContainer/VFlowContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_xpjus")
+
+[node name="Herb5" type="TextureRect" parent="Control/MarginContainer/VFlowContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_k05oh")
+
+[node name="Herb6" type="TextureRect" parent="Control/MarginContainer/VFlowContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_w6vbe")
+
+[node name="Herb7" type="TextureRect" parent="Control/MarginContainer/VFlowContainer"]
+unique_name_in_owner = true
+modulate = Color(0, 0, 0, 1)
+clip_contents = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_75h2y")
+
+[node name="VFlowContainer2" type="VFlowContainer" parent="Control/MarginContainer"]
+layout_mode = 2

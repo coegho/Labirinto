@@ -3,12 +3,13 @@ extends Node2D
 class_name Item
 
 @export var usable = false
+@export var collectable = false
 
 var original_position: Vector2
 var grabbed_by: Player = null
 
-signal _entering_town()
 signal using_object()
+signal object_collected(player: Player)
 signal grabbing_object(player)
 signal dropping_object(player)
 
@@ -22,12 +23,12 @@ func _on_area_2d_body_entered(player):
 		player.grab(self)
 		grabbing_object.emit(player)
 
-func drop(switch):
+func drop(back_to_original_position = false):
 	if grabbed_by != null:
-		if switch == null:
+		if back_to_original_position:
 			get_parent().position = original_position
 		else:
-			get_parent().position = switch.get_parent().position
+			get_parent().position = grabbed_by.global_position
 		dropping_object.emit(grabbed_by)
 		grabbed_by = null
 
@@ -40,5 +41,5 @@ func use(player: Player):
 func carry(new_position: Vector2):
 	get_parent().position = new_position
 
-func entering_town():
-	_entering_town.emit()
+func collect(player: Player):
+	object_collected.emit(player)

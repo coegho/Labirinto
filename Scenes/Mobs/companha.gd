@@ -10,8 +10,6 @@ var pending_path: Array = []
 
 var dead_ends : Array = []
 
-var player
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -27,7 +25,6 @@ func _physics_process(delta):
 				animation_player.play("walking_left")
 			position = position.move_toward(next, speed * delta)
 	else:
-		#pending_path = PathfinderManager.get_point_path_global(position, player.position)
 		pending_path = PathfinderManager.get_point_path_global(position, dead_ends.pick_random())
 
 

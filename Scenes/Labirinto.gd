@@ -163,7 +163,7 @@ func build_town(town_maze_position: Vector2i) -> Array:
 	movements =  movements.filter(func (movement): return road_cells.has(tilemap_position + movement))
 	var town_cells: Array = movements.map(func (movement): return tilemap_position + movement)
 	town_cells.append(tilemap_position)
-	print(town_cells)
+	
 	set_cells_terrain_connect(0, town_cells, 0, TOWN_TERRAIN)
 	return town_cells
 
@@ -178,10 +178,10 @@ func generate_initial_walls() -> void:
 func apply_autotile() -> void:
 	set_cells_terrain_connect(0, road_cells, 0, ROAD_TERRAIN)
 
-func get_item_positions(road_cells: Array, dead_ends: Array, crossings: Array) -> Array:
+func get_item_positions(cells: Array, dead_ends: Array, crossings: Array) -> Array:
 	var valid_cells: Array = []
 	dead_ends = dead_ends.slice(2)
-	for cell in road_cells:
+	for cell in cells:
 		if not cell in dead_ends and not cell in crossings:
 			valid_cells.append(cell)
 	return valid_cells

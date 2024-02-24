@@ -10,11 +10,11 @@ func use(player: Player):
 		player.fly_to(target_position)
 		used_broom.emit(player)
 
-func is_empty(position: Vector2) -> bool:
+func is_empty(testing_position: Vector2) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	# use global coordinates, not local to node
 	var query = PhysicsPointQueryParameters2D.new()
-	query.position = position
+	query.position = testing_position
 	query.collision_mask = 0b00000000_00000000_00000000_00000010
 	var result = space_state.intersect_point(query)
 	return result.is_empty()
