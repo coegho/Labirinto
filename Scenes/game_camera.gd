@@ -8,12 +8,6 @@ extends Camera2D
 func _process(_delta):
 	if follow != null:
 		position = follow.position
-	else:
-		var horizontal_direction = Input.get_axis("ui_left", "ui_right")
-		var vertical_direction = Input.get_axis("ui_up", "ui_down")
-		var direction: Vector2 = Vector2(horizontal_direction, vertical_direction)
-		global_position = global_position + direction * 20 * _delta
-		print(global_position)
 
 
 func _on_player_flash_screen():

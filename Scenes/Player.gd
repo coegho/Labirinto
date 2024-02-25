@@ -7,6 +7,7 @@ class_name Player
 @export var flying_speed_blocks_per_second = 2.5
 @export var seconds_until_full_speed: float = 0.25
 @export var seconds_until_fully_stopped = 0.15
+@export var push_impact = 240
 
 signal player_catched(player: Player)
 
@@ -101,7 +102,14 @@ func normal_process(delta):
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, deceleration * delta)
 	play_animation(direction)
-	move_and_slide()
+	if move_and_slide():
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			var collider = collision.get_collider()
+			if collider.has_method("being_pushed"):
+				#outro xogador
+				collider.being_pushed(-collision.get_normal().normalized())
+				being_pushed(collision.get_normal().normalized())
 
 func stunned_process(_delta):
 	animation_player.play("stunned")
@@ -181,6 +189,9 @@ func scare():
 func fly_to(target_position: Vector2):
 	state = PlayerState.FLYING
 	flying_target_position = target_position
+
+func being_pushed(other_velocity: Vector2):
+	velocity = other_velocity * push_impact
 
 func _on_stun_timer_timeout():
 	state = PlayerState.NORMAL
