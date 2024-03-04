@@ -14,6 +14,8 @@ extends Node2D
 @export var vasoira_scene: PackedScene
 @export var salt_circle_scene: PackedScene
 
+@export var max_herbs: int = 7
+
 @onready var maze: Labirinto = $Labirinto
 
 signal created_herbs(herbs: Array)
@@ -64,7 +66,7 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 	var total_herbs = 0
 	var herbs: Array = []
 	for dead_end in dead_ends:
-		if herbs.size() < 7:
+		if herbs.size() < max_herbs:
 			var herb: Herb = instantiate_entity(herb_scene, dead_end)
 			herbs.append(herb)
 			herb.sprite.frame = total_herbs

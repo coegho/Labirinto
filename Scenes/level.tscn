@@ -673,31 +673,31 @@ sources/1 = SubResource("TileSetAtlasSource_bc888")
 [node name="Level" type="Node2D"]
 script = ExtResource("1_28psp")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-custom_minimum_size = Vector2(1216, 608)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1216.0
-offset_bottom = 608.0
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 2
 
-[node name="SubViewportContainer1" type="SubViewportContainer" parent="GridContainer"]
+[node name="SubViewportContainer1" type="SubViewportContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
-[node name="Viewport1" type="SubViewport" parent="GridContainer/SubViewportContainer1"]
+[node name="Viewport1" type="SubViewport" parent="CanvasLayer/HBoxContainer/SubViewportContainer1"]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(606, 608)
+size = Vector2i(608, 608)
 render_target_update_mode = 4
 script = ExtResource("19_byo4d")
 
-[node name="World" type="Node2D" parent="GridContainer/SubViewportContainer1/Viewport1"]
+[node name="World" type="Node2D" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1"]
 y_sort_enabled = true
 script = ExtResource("2_3ypgm")
 player_scene = ExtResource("2_g0mfy")
@@ -713,61 +713,58 @@ salt_scene = ExtResource("11_2dpvw")
 vasoira_scene = ExtResource("12_ayb54")
 salt_circle_scene = ExtResource("13_okoab")
 
-[node name="Labirinto" type="TileMap" parent="GridContainer/SubViewportContainer1/Viewport1/World"]
+[node name="Labirinto" type="TileMap" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World"]
 z_index = -1
 position = Vector2(1, 2)
 tile_set = SubResource("TileSet_5q8pe")
 format = 2
 script = ExtResource("18_vehkn")
 
-[node name="Player1" parent="GridContainer/SubViewportContainer1/Viewport1/World" instance=ExtResource("2_g0mfy")]
+[node name="Player1" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World" instance=ExtResource("2_g0mfy")]
 position = Vector2(-20, 0)
 
-[node name="Player2" parent="GridContainer/SubViewportContainer1/Viewport1/World" instance=ExtResource("2_g0mfy")]
+[node name="Player2" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World" instance=ExtResource("2_g0mfy")]
 position = Vector2(-30, 0)
 player_number = 2
 
-[node name="CanvasModulate" type="CanvasModulate" parent="GridContainer/SubViewportContainer1/Viewport1/World"]
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World"]
 visible = false
 color = Color(0, 0, 0, 1)
 
-[node name="GameCamera" parent="GridContainer/SubViewportContainer1/Viewport1" node_paths=PackedStringArray("follow") instance=ExtResource("18_qfbh7")]
+[node name="GameCamera" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1" node_paths=PackedStringArray("follow") instance=ExtResource("18_qfbh7")]
 limit_left = 0
 limit_top = 0
 limit_right = 608
 limit_bottom = 608
 follow = NodePath("../World/Player1")
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer"]
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 stretch = true
 
-[node name="Viewport2" type="SubViewport" parent="GridContainer/SubViewportContainer2" node_paths=PackedStringArray("original_viewport")]
+[node name="Viewport2" type="SubViewport" parent="CanvasLayer/HBoxContainer/SubViewportContainer2" node_paths=PackedStringArray("original_viewport")]
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(606, 608)
+size = Vector2i(608, 608)
 render_target_update_mode = 4
 script = ExtResource("19_byo4d")
 original_viewport = NodePath("../../SubViewportContainer1/Viewport1")
 
-[node name="GameCamera" parent="GridContainer/SubViewportContainer2/Viewport2" node_paths=PackedStringArray("follow") instance=ExtResource("18_qfbh7")]
+[node name="GameCamera" parent="CanvasLayer/HBoxContainer/SubViewportContainer2/Viewport2" node_paths=PackedStringArray("follow") instance=ExtResource("18_qfbh7")]
 limit_left = 0
 limit_top = 0
 limit_right = 608
 limit_bottom = 608
 follow = NodePath("../../../SubViewportContainer1/Viewport1/World/Player2")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
-
 [node name="UI" parent="CanvasLayer" instance=ExtResource("20_vg70s")]
 unique_name_in_owner = true
 
-[connection signal="created_herbs" from="GridContainer/SubViewportContainer1/Viewport1/World" to="." method="_on_world_created_herbs"]
-[connection signal="maze_built" from="GridContainer/SubViewportContainer1/Viewport1/World/Labirinto" to="GridContainer/SubViewportContainer1/Viewport1/World" method="_on_labirinto_maze_built"]
-[connection signal="flash_screen" from="GridContainer/SubViewportContainer1/Viewport1/World/Player1" to="GridContainer/SubViewportContainer1/Viewport1/GameCamera" method="_on_player_flash_screen"]
-[connection signal="player_catched" from="GridContainer/SubViewportContainer1/Viewport1/World/Player1" to="." method="_on_player_catched"]
-[connection signal="flash_screen" from="GridContainer/SubViewportContainer1/Viewport1/World/Player2" to="GridContainer/SubViewportContainer2/Viewport2/GameCamera" method="_on_player_flash_screen"]
-[connection signal="player_catched" from="GridContainer/SubViewportContainer1/Viewport1/World/Player2" to="." method="_on_player_catched"]
+[connection signal="created_herbs" from="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World" to="." method="_on_world_created_herbs"]
+[connection signal="maze_built" from="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World/Labirinto" to="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World" method="_on_labirinto_maze_built"]
+[connection signal="flash_screen" from="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World/Player1" to="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/GameCamera" method="_on_player_flash_screen"]
+[connection signal="player_catched" from="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World/Player1" to="." method="_on_player_catched"]
+[connection signal="flash_screen" from="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World/Player2" to="CanvasLayer/HBoxContainer/SubViewportContainer2/Viewport2/GameCamera" method="_on_player_flash_screen"]
+[connection signal="player_catched" from="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World/Player2" to="." method="_on_player_catched"]
