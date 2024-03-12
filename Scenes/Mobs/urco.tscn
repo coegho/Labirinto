@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://8af37kayo22p"]
 
-[ext_resource type="Script" path="res://Scenes/Mobs/urco.gd" id="1_67mvg"]
-[ext_resource type="Texture2D" uid="uid://2ynix7a33f7e" path="res://Resources/Sprites/urco.png" id="1_l7e1m"]
-[ext_resource type="Script" path="res://Scenes/Mobs/sight.gd" id="3_1kvp5"]
+[ext_resource type="Script" path="res://scenes/mobs/urco.gd" id="1_67mvg"]
+[ext_resource type="Texture2D" uid="uid://2ynix7a33f7e" path="res://resources/sprites/urco.png" id="1_l7e1m"]
+[ext_resource type="Script" path="res://scenes/mobs/sight.gd" id="3_1kvp5"]
 
 [sub_resource type="Animation" id="Animation_33fwd"]
 resource_name = "idle"

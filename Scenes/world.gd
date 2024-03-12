@@ -1,6 +1,8 @@
 extends Node2D
 
-@export var player_scene: PackedScene
+class_name World
+
+@export var player_scene: PackedScene = preload("res://Scenes/player.tscn")
 @export var town_scene: PackedScene
 @export var companha_scene: PackedScene
 @export var urco_scene: PackedScene
@@ -17,6 +19,9 @@ extends Node2D
 @export var max_herbs: int = 7
 
 @onready var maze: Labirinto = $Labirinto
+@onready var second_viewport = $"../../../SubViewportContainer2"
+
+var number_of_players: int
 
 signal created_herbs(herbs: Array)
 
@@ -26,16 +31,20 @@ func _on_labirinto_maze_built(starting_point: Vector2, dead_ends: Array, crossin
 func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: Array, item_positions: Array):
 	dead_ends.remove_at(dead_ends.find(starting_point))
 	var town = instantiate_entity(town_scene, starting_point)
-	#player = instantiate_entity(player_scene, starting_point)
 	var player
 	player = $Player1
 	player.global_position = starting_point + Vector2.LEFT*8
 	player.town = town
 	player.velocity = Vector2.ZERO
+	
 	player = $Player2
-	player.global_position = starting_point + Vector2.RIGHT*8
-	player.town = town
-	player.velocity = Vector2.ZERO
+	if number_of_players >= 2:
+		player.global_position = starting_point + Vector2.RIGHT*8
+		player.town = town
+		player.velocity = Vector2.ZERO
+	else:
+		player.queue_free()
+		second_viewport.visible = false
 	
 	var crosses = []
 	for crossing in crossings:

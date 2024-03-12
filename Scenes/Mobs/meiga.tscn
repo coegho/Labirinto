@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bsois3vh22rvg"]
 
-[ext_resource type="Texture2D" uid="uid://yg2xahhd21ug" path="res://Resources/Sprites/meiga.png" id="1_0uqco"]
-[ext_resource type="Script" path="res://Scenes/Mobs/meiga.gd" id="1_6iiku"]
+[ext_resource type="Texture2D" uid="uid://yg2xahhd21ug" path="res://resources/sprites/meiga.png" id="1_0uqco"]
+[ext_resource type="Script" path="res://scenes/mobs/meiga.gd" id="1_6iiku"]
 
 [sub_resource type="Animation" id="Animation_i3i7j"]
 resource_name = "fly_left"

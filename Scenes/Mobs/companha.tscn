@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://bc0wuhq18luuo"]
 
-[ext_resource type="Texture2D" uid="uid://d0rm08pmaduif" path="res://Resources/Sprites/companha.png" id="1_3ti2d"]
-[ext_resource type="Script" path="res://Scenes/Mobs/companha.gd" id="1_q0gvq"]
-[ext_resource type="Texture2D" uid="uid://d2khxq4fgr28p" path="res://Resources/Sprites/area_circle_white.png" id="4_f1j71"]
+[ext_resource type="Texture2D" uid="uid://d0rm08pmaduif" path="res://resources/sprites/companha.png" id="1_3ti2d"]
+[ext_resource type="Script" path="res://scenes/mobs/companha.gd" id="1_q0gvq"]
+[ext_resource type="Texture2D" uid="uid://d2khxq4fgr28p" path="res://resources/sprites/area_circle_white.png" id="4_f1j71"]
 
 [sub_resource type="Animation" id="Animation_cysvj"]
 resource_name = "walking_left"

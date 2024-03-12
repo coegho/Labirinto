@@ -1,0 +1,267 @@
+[gd_scene load_steps=26 format=3 uid="uid://cfkmqtnuken2g"]
+
+[ext_resource type="Script" path="res://scenes/menus/text_menu.gd" id="1_nwo86"]
+[ext_resource type="Texture2D" uid="uid://bus3uf8rat1qj" path="res://resources/sprites/tileset.png" id="2_v5ygr"]
+[ext_resource type="Texture2D" uid="uid://dstud4cgg6bd6" path="res://resources/sprites/herbs.png" id="3_vaer0"]
+[ext_resource type="Texture2D" uid="uid://q5qh3d2jieyn" path="res://resources/sprites/vila.png" id="4_fvbk8"]
+[ext_resource type="Texture2D" uid="uid://d1ho54jyucg53" path="res://resources/sprites/burleiro.png" id="5_isvem"]
+[ext_resource type="Texture2D" uid="uid://2ynix7a33f7e" path="res://resources/sprites/urco.png" id="6_f37jy"]
+[ext_resource type="Texture2D" uid="uid://yg2xahhd21ug" path="res://resources/sprites/meiga.png" id="7_5ntup"]
+[ext_resource type="Texture2D" uid="uid://d0rm08pmaduif" path="res://resources/sprites/companha.png" id="8_geptk"]
+[ext_resource type="Texture2D" uid="uid://bl8j3qfjp7m7h" path="res://resources/sprites/vacaloura.png" id="9_gkl2g"]
+[ext_resource type="Texture2D" uid="uid://bnc43uw1nmnrr" path="res://resources/sprites/cruceiro.png" id="10_qyn6v"]
+[ext_resource type="Texture2D" uid="uid://bs05gua78l5ch" path="res://resources/sprites/area_circle_white_empty.png" id="11_rm3qt"]
+[ext_resource type="Texture2D" uid="uid://bh5imkilu2r5o" path="res://resources/sprites/salt.png" id="12_52qnm"]
+[ext_resource type="Theme" uid="uid://dgmb6dbvp18iy" path="res://resources/theme.tres" id="13_ojdfe"]
+
+[sub_resource type="Theme" id="Theme_5ie4j"]
+Label/font_sizes/font_size = 22
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_garbl"]
+atlas = ExtResource("2_v5ygr")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_o4ktk"]
+load_path = "res://.godot/imported/character.png-d4e2055f12c66d0ea049f777e5bd4a72.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur1jn"]
+atlas = SubResource("CompressedTexture2D_o4ktk")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm850"]
+atlas = ExtResource("3_vaer0")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0pmv"]
+atlas = ExtResource("5_isvem")
+region = Rect2(0, 0, 11, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hh45"]
+atlas = ExtResource("6_f37jy")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gheaf"]
+atlas = ExtResource("7_5ntup")
+region = Rect2(0, 0, 15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7rgs"]
+atlas = ExtResource("8_geptk")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8bb1h"]
+atlas = SubResource("CompressedTexture2D_o4ktk")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ho07"]
+atlas = SubResource("CompressedTexture2D_o4ktk")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_535iv"]
+atlas = SubResource("CompressedTexture2D_o4ktk")
+region = Rect2(24, 0, 8, 8)
+
+[node name="InstructionsMenu" type="CanvasLayer"]
+script = ExtResource("1_nwo86")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_5ie4j")
+
+[node name="Background" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_garbl")
+
+[node name="PlayerTexture" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 147.0
+offset_right = 507.0
+offset_bottom = 187.0
+texture = SubResource("AtlasTexture_ur1jn")
+
+[node name="HerbRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 468.0
+offset_top = 107.0
+offset_right = 508.0
+offset_bottom = 147.0
+texture = SubResource("AtlasTexture_vm850")
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 30.0
+offset_right = 256.0
+offset_bottom = 61.0
+grow_horizontal = 2
+text = "Recolle todas as herbas de San Xoán para gañar"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -381.0
+offset_top = -52.0
+offset_right = 413.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Coidado coas criaturas da noite! Usa os obxectos máxicos para te protexer"
+
+[node name="TownRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 108.0
+offset_right = 678.0
+offset_bottom = 148.0
+scale = Vector2(2, 2)
+texture = ExtResource("4_fvbk8")
+
+[node name="DianhoRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 313.0
+offset_right = 363.0
+offset_bottom = 326.0
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_s0pmv")
+
+[node name="UrcoRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 308.0
+offset_right = 436.0
+offset_bottom = 322.0
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_4hh45")
+
+[node name="MeigaRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 507.0
+offset_top = 313.0
+offset_right = 522.0
+offset_bottom = 325.0
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_gheaf")
+
+[node name="CompanhaRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 422.0
+offset_top = 429.0
+offset_right = 436.0
+offset_bottom = 443.0
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_m7rgs")
+
+[node name="PlayerVacalouraRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 331.0
+offset_right = 737.0
+offset_bottom = 371.0
+texture = SubResource("AtlasTexture_8bb1h")
+flip_h = true
+
+[node name="VacalouraRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 697.0
+offset_top = 291.0
+offset_right = 737.0
+offset_bottom = 331.0
+texture = ExtResource("9_gkl2g")
+
+[node name="PlayerSaltedRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 458.0
+offset_right = 646.0
+offset_bottom = 466.0
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_3ho07")
+flip_h = true
+
+[node name="CrossRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 437.0
+offset_right = 650.0
+offset_bottom = 455.0
+scale = Vector2(3, 3)
+texture = ExtResource("10_qyn6v")
+
+[node name="CrossCircleRect" type="TextureRect" parent="Control/CrossRect"]
+modulate = Color(0.34902, 0.337255, 0.321569, 1)
+layout_mode = 0
+offset_left = -10.25
+offset_top = -7.25
+offset_right = 21.75
+offset_bottom = 24.75
+texture = ExtResource("11_rm3qt")
+
+[node name="SaltCircleRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 732.0
+offset_top = 415.0
+offset_right = 764.0
+offset_bottom = 447.0
+scale = Vector2(3, 3)
+texture = ExtResource("11_rm3qt")
+
+[node name="PlayerSaltedRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 770.0
+offset_top = 461.0
+offset_right = 778.0
+offset_bottom = 469.0
+scale = Vector2(3, 3)
+texture = SubResource("AtlasTexture_535iv")
+flip_h = true
+
+[node name="SaltRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 773.0
+offset_top = 437.0
+offset_right = 778.0
+offset_bottom = 445.0
+scale = Vector2(3, 3)
+texture = ExtResource("12_52qnm")
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 429.0
+offset_right = 1101.0
+offset_bottom = 494.0
+text = "(Pulsa o botón de acción
+para usar obxectos)"
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 987.0
+offset_top = -60.0
+offset_right = 1188.0
+offset_bottom = -24.0
+grow_vertical = 0
+theme = ExtResource("13_ojdfe")
+text = "Volver ao menú"
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

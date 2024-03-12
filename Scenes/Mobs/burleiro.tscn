@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://bu6151m4txtq0"]
 
-[ext_resource type="Texture2D" uid="uid://d1ho54jyucg53" path="res://Resources/Sprites/burleiro.png" id="1_4nmwi"]
-[ext_resource type="Script" path="res://Scenes/Mobs/burleiro.gd" id="1_x0mww"]
-[ext_resource type="Texture2D" uid="uid://dstud4cgg6bd6" path="res://Resources/Sprites/herbs.png" id="3_p0gty"]
+[ext_resource type="Texture2D" uid="uid://d1ho54jyucg53" path="res://resources/sprites/burleiro.png" id="1_4nmwi"]
+[ext_resource type="Script" path="res://scenes/mobs/burleiro.gd" id="1_x0mww"]
+[ext_resource type="Texture2D" uid="uid://dstud4cgg6bd6" path="res://resources/sprites/herbs.png" id="3_p0gty"]
 
 [sub_resource type="Animation" id="Animation_2ofqy"]
 resource_name = "idle"

@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgwn3ymqt268t"]
+
+[ext_resource type="Script" path="res://scenes/menus/text_menu.gd" id="1_0vie1"]
+[ext_resource type="Theme" uid="uid://pywqfht0k7cf" path="res://resources/main_menu_theme.tres" id="2_osl7n"]
+[ext_resource type="Texture2D" uid="uid://cwqrnj01bnw5b" path="res://resources/sprites/main_menu.png" id="3_2o306"]
+[ext_resource type="Theme" uid="uid://dgmb6dbvp18iy" path="res://resources/theme.tres" id="4_t6rwd"]
+
+[node name="CreditsMenu" type="CanvasLayer"]
+script = ExtResource("1_0vie1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_osl7n")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0.0509804, 0.117647, 0.321569, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_2o306")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "As Herbas de San Xoán"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Xogo creado por"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Martín Coego \"Coegho\""
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Todos os sprites son de creación propia. As música e efectos de son de librarías online."
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label5" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Xogo feito en Godot:"
+
+[node name="LinkButton" type="LinkButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sitio Web de Godot"
+uri = "https://godotengine.org/"
+
+[node name="LinkButton" type="LinkButton" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Código fonte en GitHub"
+uri = "https://github.com/coegho/Labirinto"
+
+[node name="Button" type="Button" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("4_t6rwd")
+text = "Volver ao menú"
+
+[connection signal="pressed" from="Control/MarginContainer/Button" to="." method="_on_button_pressed"]

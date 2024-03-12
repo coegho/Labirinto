@@ -1,24 +1,24 @@
 [gd_scene load_steps=22 format=3 uid="uid://b0ondiaqe1ynl"]
 
-[ext_resource type="Script" path="res://Scenes/level.gd" id="1_28psp"]
-[ext_resource type="Script" path="res://Scenes/world.gd" id="2_3ypgm"]
-[ext_resource type="PackedScene" uid="uid://dst54fuh7y0o7" path="res://Scenes/player.tscn" id="2_g0mfy"]
-[ext_resource type="PackedScene" uid="uid://2m52enh5ssl" path="res://Scenes/town.tscn" id="3_4u53y"]
-[ext_resource type="PackedScene" uid="uid://bc0wuhq18luuo" path="res://Scenes/Mobs/companha.tscn" id="4_8q6li"]
-[ext_resource type="PackedScene" uid="uid://8af37kayo22p" path="res://Scenes/Mobs/urco.tscn" id="5_r7k4i"]
-[ext_resource type="PackedScene" uid="uid://ctt14l48jkioy" path="res://Scenes/cross.tscn" id="6_acdot"]
-[ext_resource type="PackedScene" uid="uid://bu6151m4txtq0" path="res://Scenes/Mobs/burleiro.tscn" id="7_iji32"]
-[ext_resource type="PackedScene" uid="uid://bsois3vh22rvg" path="res://Scenes/Mobs/meiga.tscn" id="8_rayqd"]
-[ext_resource type="PackedScene" uid="uid://b2jk5p3sjicu3" path="res://Scenes/Items/herb.tscn" id="9_8j6cf"]
-[ext_resource type="PackedScene" uid="uid://b3mv6hjffjrn8" path="res://Scenes/Items/vacaloura.tscn" id="10_axwdi"]
-[ext_resource type="PackedScene" uid="uid://caod3elqkhklb" path="res://Scenes/Items/salt.tscn" id="11_2dpvw"]
-[ext_resource type="PackedScene" uid="uid://51byldyhucnv" path="res://Scenes/Items/vasoira.tscn" id="12_ayb54"]
-[ext_resource type="PackedScene" uid="uid://cmqv6u8bgpu1k" path="res://Scenes/salt_circle.tscn" id="13_okoab"]
-[ext_resource type="Texture2D" uid="uid://bus3uf8rat1qj" path="res://Resources/Sprites/tileset.png" id="17_rgis5"]
-[ext_resource type="PackedScene" uid="uid://dwaqkevwind3s" path="res://Scenes/game_camera.tscn" id="18_qfbh7"]
-[ext_resource type="Script" path="res://Scenes/labirinto.gd" id="18_vehkn"]
-[ext_resource type="Script" path="res://Scenes/split_subviewport.gd" id="19_byo4d"]
-[ext_resource type="PackedScene" uid="uid://d230i8gfdyxl3" path="res://Scenes/ui.tscn" id="20_vg70s"]
+[ext_resource type="Script" path="res://scenes/level.gd" id="1_28psp"]
+[ext_resource type="Script" path="res://scenes/world.gd" id="2_3ypgm"]
+[ext_resource type="PackedScene" uid="uid://dst54fuh7y0o7" path="res://scenes/player.tscn" id="2_g0mfy"]
+[ext_resource type="PackedScene" uid="uid://2m52enh5ssl" path="res://scenes/town.tscn" id="3_4u53y"]
+[ext_resource type="PackedScene" uid="uid://bc0wuhq18luuo" path="res://scenes/mobs/companha.tscn" id="4_8q6li"]
+[ext_resource type="PackedScene" uid="uid://8af37kayo22p" path="res://scenes/mobs/urco.tscn" id="5_r7k4i"]
+[ext_resource type="PackedScene" uid="uid://ctt14l48jkioy" path="res://scenes/cross.tscn" id="6_acdot"]
+[ext_resource type="PackedScene" uid="uid://bu6151m4txtq0" path="res://scenes/mobs/burleiro.tscn" id="7_iji32"]
+[ext_resource type="PackedScene" uid="uid://bsois3vh22rvg" path="res://scenes/mobs/meiga.tscn" id="8_rayqd"]
+[ext_resource type="PackedScene" uid="uid://b2jk5p3sjicu3" path="res://scenes/items/herb.tscn" id="9_8j6cf"]
+[ext_resource type="PackedScene" uid="uid://b3mv6hjffjrn8" path="res://scenes/items/vacaloura.tscn" id="10_axwdi"]
+[ext_resource type="PackedScene" uid="uid://caod3elqkhklb" path="res://scenes/items/salt.tscn" id="11_2dpvw"]
+[ext_resource type="PackedScene" uid="uid://51byldyhucnv" path="res://scenes/items/vasoira.tscn" id="12_ayb54"]
+[ext_resource type="PackedScene" uid="uid://cmqv6u8bgpu1k" path="res://scenes/salt_circle.tscn" id="13_okoab"]
+[ext_resource type="Texture2D" uid="uid://bus3uf8rat1qj" path="res://resources/sprites/tileset.png" id="17_rgis5"]
+[ext_resource type="PackedScene" uid="uid://dwaqkevwind3s" path="res://scenes/game_camera.tscn" id="18_qfbh7"]
+[ext_resource type="Script" path="res://scenes/labirinto.gd" id="18_vehkn"]
+[ext_resource type="Script" path="res://scenes/split_subviewport.gd" id="19_byo4d"]
+[ext_resource type="PackedScene" uid="uid://d230i8gfdyxl3" path="res://scenes/ui.tscn" id="20_vg70s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bc888"]
 texture = ExtResource("17_rgis5")
@@ -700,7 +700,6 @@ script = ExtResource("19_byo4d")
 [node name="World" type="Node2D" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1"]
 y_sort_enabled = true
 script = ExtResource("2_3ypgm")
-player_scene = ExtResource("2_g0mfy")
 town_scene = ExtResource("3_4u53y")
 companha_scene = ExtResource("4_8q6li")
 urco_scene = ExtResource("5_r7k4i")

@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctt14l48jkioy"]
 
-[ext_resource type="Texture2D" uid="uid://bnc43uw1nmnrr" path="res://Resources/Sprites/cruceiro.png" id="1_0tt32"]
-[ext_resource type="PackedScene" uid="uid://cmqv6u8bgpu1k" path="res://Scenes/salt_circle.tscn" id="2_erbsl"]
+[ext_resource type="Texture2D" uid="uid://bnc43uw1nmnrr" path="res://resources/sprites/cruceiro.png" id="1_xgnxm"]
+[ext_resource type="PackedScene" uid="uid://cmqv6u8bgpu1k" path="res://scenes/salt_circle.tscn" id="2_y28yh"]
 
 [node name="Cross" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_0tt32")
+texture = ExtResource("1_xgnxm")
 
-[node name="SaltCircle" parent="." instance=ExtResource("2_erbsl")]
+[node name="SaltCircle" parent="." instance=ExtResource("2_y28yh")]
 modulate = Color(0.34902, 0.337255, 0.321569, 1)
 position = Vector2(0, 1)

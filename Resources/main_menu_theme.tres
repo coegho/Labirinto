@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://pywqfht0k7cf"]
+
+[sub_resource type="FontVariation" id="FontVariation_kcvnh"]
+variation_embolden = 0.85
+
+[sub_resource type="Gradient" id="Gradient_4tovr"]
+colors = PackedColorArray(0.384314, 0.0431373, 0.478431, 1, 0.670588, 0.247059, 0.772549, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_opun6"]
+gradient = SubResource("Gradient_4tovr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jolnp"]
+texture = SubResource("GradientTexture1D_opun6")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+Button/colors/font_color = Color(0.976471, 0.921569, 0.886275, 1)
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 50
+Button/fonts/font = SubResource("FontVariation_kcvnh")
+Button/styles/normal = SubResource("StyleBoxTexture_jolnp")
+RemapButton/base_type = &"Button"
+RemapButton/font_sizes/font_size = 14
+SmallButton/base_type = &"Button"
+SmallButton/font_sizes/font_size = 40

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl8j3qfjp7m7h"
-path="res://.godot/imported/vacaloura.png-c63934681a1f8465d283370534257b4e.ctex"
+path="res://.godot/imported/vacaloura.png-dce56934b1b6ec2fd87e14d995161228.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/vacaloura.png"
-dest_files=["res://.godot/imported/vacaloura.png-c63934681a1f8465d283370534257b4e.ctex"]
+source_file="res://resources/sprites/vacaloura.png"
+dest_files=["res://.godot/imported/vacaloura.png-dce56934b1b6ec2fd87e14d995161228.ctex"]
 
 [params]
 

@@ -4,7 +4,7 @@
 variation_embolden = 0.85
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wbqvl"]
-bg_color = Color(0, 0.454902, 0.235294, 1)
+bg_color = Color(0.701961, 0.0392157, 0.239216, 1)
 
 [resource]
 Button/colors/font_color = Color(1, 0.941176, 0.615686, 1)

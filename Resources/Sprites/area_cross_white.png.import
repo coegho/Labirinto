@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wt82sprw1lwl"
-path="res://.godot/imported/area_cross_white.png-c24bdc330df15c05f07d97153d15086a.ctex"
+path="res://.godot/imported/area_cross_white.png-812715ab7f6df9026b562f795f75b718.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/area_cross_white.png"
-dest_files=["res://.godot/imported/area_cross_white.png-c24bdc330df15c05f07d97153d15086a.ctex"]
+source_file="res://resources/sprites/area_cross_white.png"
+dest_files=["res://.godot/imported/area_cross_white.png-812715ab7f6df9026b562f795f75b718.ctex"]
 
 [params]
 

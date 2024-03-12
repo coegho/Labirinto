@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgxjtugvdjfrh"]
+
+[ext_resource type="Script" path="res://scenes/menus/text_menu.gd" id="1_xgv6l"]
+[ext_resource type="Theme" uid="uid://pywqfht0k7cf" path="res://resources/main_menu_theme.tres" id="2_02gs5"]
+[ext_resource type="Texture2D" uid="uid://cwqrnj01bnw5b" path="res://resources/sprites/main_menu.png" id="3_6c114"]
+[ext_resource type="PackedScene" uid="uid://cpk3mkn116cao" path="res://scenes/menus/input_remap_button.tscn" id="4_l467m"]
+[ext_resource type="Theme" uid="uid://dgmb6dbvp18iy" path="res://resources/theme.tres" id="5_vfoex"]
+
+[node name="ControlsMenu" type="CanvasLayer"]
+script = ExtResource("1_xgv6l")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_02gs5")
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0.0509804, 0.117647, 0.321569, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_6c114")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Controis"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="LabelMoveUp" type="Label" parent="Control/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Mover arriba"
+
+[node name="ButtonMoveUp1" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player1_up"
+
+[node name="ButtonMoveUp2" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player2_up"
+
+[node name="LabelMoveDown" type="Label" parent="Control/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Mover abaixo"
+
+[node name="ButtonMoveDown1" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player1_down"
+
+[node name="ButtonMoveDown2" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player2_down"
+
+[node name="LabelMoveLeft" type="Label" parent="Control/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Mover esquerda"
+
+[node name="ButtonMoveLeft1" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player1_left"
+
+[node name="ButtonMoveLeft2" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player2_left"
+
+[node name="LabelMoveRight" type="Label" parent="Control/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Mover dereita"
+
+[node name="ButtonMoveRight1" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player1_right"
+
+[node name="ButtonMoveRight2" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player2_right"
+
+[node name="LabelUse" type="Label" parent="Control/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Usar obxecto"
+
+[node name="ButtonUse1" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player1_use"
+
+[node name="ButtonUse2" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player2_use"
+
+[node name="LabelDrop" type="Label" parent="Control/MarginContainer/GridContainer"]
+layout_mode = 2
+text = "Ciscar obxecto"
+
+[node name="ButtonDrop1" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player1_drop"
+
+[node name="ButtonDrop2" parent="Control/MarginContainer/GridContainer" instance=ExtResource("4_l467m")]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+action = "player2_drop"
+
+[node name="ExitButton" type="Button" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme = ExtResource("5_vfoex")
+text = "Volver ao menú"
+
+[connection signal="pressed" from="Control/MarginContainer/ExitButton" to="." method="_on_button_pressed"]

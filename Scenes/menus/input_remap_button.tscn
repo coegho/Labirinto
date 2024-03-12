@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpk3mkn116cao"]
+
+[ext_resource type="Script" path="res://scenes/menus/input_remap_button.gd" id="1_3xvxe"]
+
+[node name="InputRemapButton" type="Button"]
+theme_type_variation = &"RemapButton"
+toggle_mode = true
+text = "..."
+script = ExtResource("1_3xvxe")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

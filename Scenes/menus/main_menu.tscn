@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce6wnsowsbavg"]
+
+[ext_resource type="Script" path="res://scenes/menus/main_menu.gd" id="1_43762"]
+[ext_resource type="Texture2D" uid="uid://cwqrnj01bnw5b" path="res://resources/sprites/main_menu.png" id="2_hda31"]
+[ext_resource type="Theme" uid="uid://pywqfht0k7cf" path="res://resources/main_menu_theme.tres" id="3_slwo4"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_43762")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0509804, 0.117647, 0.321569, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hda31")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_slwo4")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="btnControls" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_slwo4")
+theme_type_variation = &"SmallButton"
+text = "CONTROIS"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"2"
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="btnNewGame1" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "1 XOG."
+
+[node name="btnNewGame2" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "2 XOG."
+
+[node name="btnInstructions" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "INSTRUCIÓNS"
+
+[node name="btnCredits" type="Button" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("3_slwo4")
+theme_type_variation = &"SmallButton"
+text = "CRÉDITOS"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/btnControls" to="." method="_on_btn_controls_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/btnNewGame1" to="." method="_on_btn_new_game_1_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/btnNewGame2" to="." method="_on_btn_new_game_2_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/btnInstructions" to="." method="_on_btn_instructions_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/btnCredits" to="." method="_on_btn_credits_pressed"]

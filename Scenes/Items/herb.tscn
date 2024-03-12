@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2jk5p3sjicu3"]
 
-[ext_resource type="Script" path="res://Scenes/Items/herb.gd" id="1_n58a7"]
-[ext_resource type="Texture2D" uid="uid://dstud4cgg6bd6" path="res://Resources/Sprites/herbs.png" id="1_tsl60"]
-[ext_resource type="PackedScene" uid="uid://cy4qisq44rknp" path="res://Scenes/Items/item.tscn" id="2_dty2i"]
+[ext_resource type="Script" path="res://scenes/items/herb.gd" id="1_n58a7"]
+[ext_resource type="Texture2D" uid="uid://dstud4cgg6bd6" path="res://resources/sprites/herbs.png" id="1_tsl60"]
+[ext_resource type="PackedScene" uid="uid://cy4qisq44rknp" path="res://scenes/items/item.tscn" id="2_dty2i"]
 
 [node name="Herb" type="Node2D"]
 script = ExtResource("1_n58a7")

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bnc43uw1nmnrr"
-path="res://.godot/imported/cruceiro.png-16c1f683aa0f218a983789460107afc1.ctex"
+path="res://.godot/imported/cruceiro.png-3941af9ec8b08b1e37cabcbc77211fd1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/cruceiro.png"
-dest_files=["res://.godot/imported/cruceiro.png-16c1f683aa0f218a983789460107afc1.ctex"]
+source_file="res://resources/sprites/cruceiro.png"
+dest_files=["res://.godot/imported/cruceiro.png-3941af9ec8b08b1e37cabcbc77211fd1.ctex"]
 
 [params]
 

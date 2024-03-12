@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://q5qh3d2jieyn"
-path="res://.godot/imported/vila.png-dfcb1ebddab0c80aed33737f6da31778.ctex"
+path="res://.godot/imported/vila.png-cdd2a323b3c795e5b6dd80ed8925d279.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/vila.png"
-dest_files=["res://.godot/imported/vila.png-dfcb1ebddab0c80aed33737f6da31778.ctex"]
+source_file="res://resources/sprites/vila.png"
+dest_files=["res://.godot/imported/vila.png-cdd2a323b3c795e5b6dd80ed8925d279.ctex"]
 
 [params]
 

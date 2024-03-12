@@ -13,6 +13,6 @@ signal saved_herb(herb: Herb, player: Player)
 
 
 func _on_item_object_collected(player: Player):
-	item.drop(null)
+	item.drop(false)
 	saved_herb.emit(self, player)
 	queue_free()

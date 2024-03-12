@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3mv6hjffjrn8"]
 
-[ext_resource type="PackedScene" uid="uid://cy4qisq44rknp" path="res://Scenes/Items/item.tscn" id="1_8kcgi"]
-[ext_resource type="Script" path="res://Scenes/Items/vacaloura.gd" id="1_k010o"]
-[ext_resource type="Texture2D" uid="uid://bl8j3qfjp7m7h" path="res://Resources/Sprites/vacaloura.png" id="2_oyijo"]
+[ext_resource type="PackedScene" uid="uid://cy4qisq44rknp" path="res://scenes/items/item.tscn" id="1_8kcgi"]
+[ext_resource type="Script" path="res://scenes/items/vacaloura.gd" id="1_k010o"]
+[ext_resource type="Texture2D" uid="uid://bl8j3qfjp7m7h" path="res://resources/sprites/vacaloura.png" id="2_oyijo"]
 
 [node name="Vacaloura" type="Node2D"]
 script = ExtResource("1_k010o")

@@ -1,62 +1,49 @@
-extends Node
+extends Node2D
 
-var score: Array[PlayerScore] = []
+const menus: Dictionary = {
+	"main_menu": preload("res://Scenes/Menus/main_menu.tscn"),
+	"instructions_menu": preload("res://Scenes/Menus/instructions_menu.tscn"),
+	"credits_menu": preload("res://Scenes/Menus/credits_menu.tscn"),
+	"controls_menu": preload("res://Scenes/Menus/controls_menu.tscn"),
+}
 
-@onready var score_display = $ScoreDisplay
-var level
-@export var level_scene: PackedScene
-@onready var lbl_catched: Array[Label] = [
-	$ScoreDisplay/MarginContainer/GridContainer/lblCatched1,
-	$ScoreDisplay/MarginContainer/GridContainer/lblCatched2
-]
-@onready var lbl_herbs_collected: Array[Label] = [
-	$ScoreDisplay/MarginContainer/GridContainer/lblHerbsCollected1,
-	$ScoreDisplay/MarginContainer/GridContainer/lblHerbsCollected2
-]
-@onready var lbl_total_score: Array[Label] = [
-	$ScoreDisplay/MarginContainer/GridContainer/lblTotalScore1,
-	$ScoreDisplay/MarginContainer/GridContainer/lblTotalScore2
-]
+func show_main_menu() -> MainMenu:
+	var menu: MainMenu = switch_menu("main_menu")
+	menu.new_game_pressed.connect(_on_main_menu_new_game_pressed)
+	menu.menu_button_pressed.connect(_on_main_menu_menu_button_pressed)
+	return menu
+
+func load_game(number_of_players):
+	for children in get_children():
+		children.queue_free()
+	var game = preload("res://Scenes/game.tscn").instantiate()
+	game.number_of_players = number_of_players
+	game.go_to_menu_pressed.connect(_on_return_to_menu_pressed)
+	return game
+
+func load_menu(menu_name: String):
+	if menus.has(menu_name):
+		var menu = menus[menu_name].instantiate()
+		if menu.has_signal("return_to_menu_pressed"):
+			menu.return_to_menu_pressed.connect(_on_return_to_menu_pressed)
+		return menu
+	else:
+		printerr("Cannot find menu %s" % menu_name)
+		return null
+
+func switch_menu(menu_name: String):
+	for children in get_children():
+		children.queue_free()
+	return load_menu(menu_name)
 
 func _ready():
-	new_game()
+	add_child(show_main_menu())
 
-func new_game():
-	score = [
-		PlayerScore.new(),
-		PlayerScore.new()
-	]
-	score_display.visible = false
+func _on_main_menu_new_game_pressed(number_of_players: int):
+	add_child(load_game(number_of_players))
 	
-	if level != null:
-		level.queue_free()
-	level = level_scene.instantiate()
-	add_child(level)
-	move_child(level, 0)
-	level.herb_collected.connect(_on_level_herb_collected)
-	level.player_catched.connect(_on_level_player_catched)
-	level.all_herbs_collected.connect(_on_level_all_herbs_collected)
-	get_tree().paused = false
+func _on_return_to_menu_pressed():
+	add_child(show_main_menu())
 
-func _on_level_player_catched(player_number):
-	score[player_number-1].catched_points = score[player_number-1].catched_points - 1
-
-
-func _on_level_herb_collected(player_number):
-	score[player_number-1].herb_points = score[player_number-1].herb_points + 1
-
-
-func _on_level_all_herbs_collected():
-	for player in [0,1]:
-		lbl_catched[player].text = str(score[player].catched_points)
-		lbl_herbs_collected[player].text = str(score[player].herb_points)
-		lbl_total_score[player].text = str(score[player].herb_points + score[player].catched_points)
-	score_display.visible = true
-
-class PlayerScore:
-	var herb_points: int = 0
-	var catched_points: int = 0
-
-
-func _on_btn_new_game_pressed():
-	new_game()
+func _on_main_menu_menu_button_pressed(menu_name):
+	add_child(switch_menu(menu_name))

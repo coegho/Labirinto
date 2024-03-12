@@ -151,7 +151,7 @@ func play_animation(direction):
 
 func being_catched():
 	if grabbed_object != null:
-		grabbed_object.drop(true)
+		grabbed_object.drop(state == PlayerState.FLYING)
 		grabbed_object = null
 	scare()
 	position = town.position

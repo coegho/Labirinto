@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cycddca5gatho"
-path="res://.godot/imported/area_circle_white_huge.png-3a6370c496fcb22b9a79f566731cc424.ctex"
+path="res://.godot/imported/area_circle_white_huge.png-4b37aca0d2dd3febedd0ef973b7cefb7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Resources/Sprites/area_circle_white_huge.png"
-dest_files=["res://.godot/imported/area_circle_white_huge.png-3a6370c496fcb22b9a79f566731cc424.ctex"]
+source_file="res://resources/sprites/area_circle_white_huge.png"
+dest_files=["res://.godot/imported/area_circle_white_huge.png-4b37aca0d2dd3febedd0ef973b7cefb7.ctex"]
 
 [params]
 

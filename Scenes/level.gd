@@ -1,11 +1,16 @@
 extends Node
 
 @onready var ui: UI = %UI
+@onready var world: World = $CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1/World
+
+var number_of_players: int
 
 signal player_catched(player_number: int)
 signal herb_collected(player_number: int)
 signal all_herbs_collected()
 
+func _ready():
+	world.number_of_players = number_of_players
 
 func add_herb(herb: Herb, player: Player):
 	herb_collected.emit(player.player_number)

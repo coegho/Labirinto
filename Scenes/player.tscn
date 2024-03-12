@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=3 uid="uid://dst54fuh7y0o7"]
 
-[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_idxjs"]
-[ext_resource type="Texture2D" uid="uid://ck3h5ayre3fdm" path="res://Resources/Sprites/character.png" id="2_jj5x0"]
-[ext_resource type="Texture2D" uid="uid://cycddca5gatho" path="res://Resources/Sprites/area_circle_white_huge.png" id="3_tysp7"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_6mqgk"]
+[ext_resource type="Texture2D" uid="uid://ck3h5ayre3fdm" path="res://resources/sprites/character.png" id="2_jj5x0"]
+[ext_resource type="Texture2D" uid="uid://cycddca5gatho" path="res://resources/sprites/area_circle_white_huge.png" id="3_tysp7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ols35"]
 radius = 4.0
@@ -344,7 +344,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 3
-script = ExtResource("1_idxjs")
+script = ExtResource("1_6mqgk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ols35")

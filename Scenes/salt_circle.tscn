@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmqv6u8bgpu1k"]
 
-[ext_resource type="Script" path="res://Scenes/salt_circle.gd" id="1_h7pw4"]
-[ext_resource type="Texture2D" uid="uid://bs05gua78l5ch" path="res://Resources/Sprites/area_circle_white_empty.png" id="2_6ok5n"]
+[ext_resource type="Script" path="res://scenes/salt_circle.gd" id="1_h7pw4"]
+[ext_resource type="Texture2D" uid="uid://bs05gua78l5ch" path="res://resources/sprites/area_circle_white_empty.png" id="2_6ok5n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gfe6e"]
 radius = 16.0
