@@ -26,5 +26,6 @@ func _unhandled_input(event):
 func remap_key(event):
 	InputMap.action_erase_events(action)
 	InputMap.action_add_event(action, event)
-	
+	SettingsManager.user_preferences.action_events[action] = event
+	SettingsManager.user_preferences.save()
 	text = "%s" % event.as_text()

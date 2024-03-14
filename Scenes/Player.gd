@@ -27,6 +27,9 @@ var flying_speed: float:
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player = $Sprite2D/AnimationPlayer
 @onready var stun_timer = $StunTimer
+@onready var item_pick_sound = $ItemPickSound
+@onready var catched_sound = $CatchedSound
+@onready var item_used_sound = $ItemUsedSound
 
 var orientation : Vector2 = Vector2.RIGHT
 
@@ -91,6 +94,7 @@ func normal_process(delta):
 		direction = direction.normalized()
 	
 	if grabbed_object != null and pressing_use and grabbed_object.usable:
+		item_used_sound.play()
 		grabbed_object.use(self)
 	elif grabbed_object != null and pressing_drop:
 		grabbed_object.drop()
@@ -161,7 +165,7 @@ func grab(object):
 	if grabbed_object != null:
 		grabbed_object.drop()
 	grabbed_object = object
-	pass
+	item_pick_sound.play()
 
 func enter_town():
 	if grabbed_object != null and grabbed_object.collectable:
@@ -185,6 +189,7 @@ func scare():
 		global_position = flying_target_position
 	state = PlayerState.STUNNED
 	stun_timer.start()
+	catched_sound.play()
 
 func fly_to(target_position: Vector2):
 	state = PlayerState.FLYING

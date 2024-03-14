@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://8af37kayo22p"]
+[gd_scene load_steps=14 format=3 uid="uid://8af37kayo22p"]
 
 [ext_resource type="Script" path="res://scenes/mobs/urco.gd" id="1_67mvg"]
 [ext_resource type="Texture2D" uid="uid://2ynix7a33f7e" path="res://resources/sprites/urco.png" id="1_l7e1m"]
 [ext_resource type="Script" path="res://scenes/mobs/sight.gd" id="3_1kvp5"]
+[ext_resource type="AudioStream" uid="uid://corw24rfdprc4" path="res://resources/audio/sfx/sfx_04.mp3" id="4_o6ita"]
 
 [sub_resource type="Animation" id="Animation_33fwd"]
 resource_name = "idle"
@@ -188,6 +189,10 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h2r08")
+
+[node name="GrowlSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_o6ita")
+bus = &"Effects"
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="Sight" to="Sight" method="_on_body_entered"]

@@ -165,8 +165,8 @@ func build_town(town_maze_position: Vector2i) -> Array:
 
 func generate_initial_walls() -> void:
 	var cells: Array[Vector2i] = []
-	for j in (MAZE_HEIGHT+1)*2+1:
-		for i in (MAZE_WIDTH+1)*2+1:
+	for j in range(-1, (MAZE_HEIGHT+1)*2+2):
+		for i in range(-1, (MAZE_WIDTH+1)*2+2):
 			cells.append(Vector2i(i, j))
 			#set_cell(0, Vector2i(i, j), 0, Vector2i(0, 0))
 	set_cells_terrain_connect(0, cells, 0, WALL_TERRAIN, false)

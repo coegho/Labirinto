@@ -15,7 +15,6 @@ func _ready():
 func add_herb(herb: Herb, player: Player):
 	herb_collected.emit(player.player_number)
 	if ui.add_herb_score(herb):
-		get_tree().paused = true
 		all_herbs_collected.emit()
 
 func _on_player_catched(player: Player):

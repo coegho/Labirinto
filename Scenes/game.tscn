@@ -1,17 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc7ljxplt4bui"]
+[gd_scene load_steps=9 format=3 uid="uid://dc7ljxplt4bui"]
 
-[ext_resource type="Script" path="res://scenes/game.gd" id="1_4haxi"]
-[ext_resource type="PackedScene" uid="uid://b0ondiaqe1ynl" path="res://scenes/level.tscn" id="2_qryrl"]
-[ext_resource type="Texture2D" uid="uid://bwwhw1fln87sl" path="res://resources/sprites/area_square_white.png" id="3_5oex8"]
-[ext_resource type="Theme" uid="uid://dgmb6dbvp18iy" path="res://resources/theme.tres" id="4_mlkvc"]
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_84lv1"]
+[ext_resource type="PackedScene" uid="uid://b0ondiaqe1ynl" path="res://scenes/level.tscn" id="2_jsmdr"]
+[ext_resource type="Texture2D" uid="uid://bwwhw1fln87sl" path="res://resources/sprites/area_square_white.png" id="3_v27ng"]
+[ext_resource type="Theme" uid="uid://dgmb6dbvp18iy" path="res://resources/theme.tres" id="4_jb8ck"]
+[ext_resource type="AudioStream" uid="uid://dr358pd7e05xl" path="res://resources/audio/bgm/bg_01.mp3" id="5_grle2"]
+[ext_resource type="AudioStream" uid="uid://ds5trgovruejr" path="res://resources/audio/bgm/bg_02.mp3" id="6_mxqyj"]
+[ext_resource type="AudioStream" uid="uid://mj4gwevdvgop" path="res://resources/audio/sfx/sfx_01.mp3" id="7_jn3qm"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vfj3b"]
 font_size = 28
 font_color = Color(0, 0, 0, 1)
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_4haxi")
-level_scene = ExtResource("2_qryrl")
+script = ExtResource("1_84lv1")
+level_scene = ExtResource("2_jsmdr")
 
 [node name="ScoreDisplay" type="CanvasLayer" parent="."]
 process_mode = 2
@@ -32,7 +35,7 @@ theme_override_constants/margin_bottom = 30
 [node name="TextureRect" type="TextureRect" parent="ScoreDisplay/MarginContainer"]
 modulate = Color(1, 1, 1, 0.792157)
 layout_mode = 2
-texture = ExtResource("3_5oex8")
+texture = ExtResource("3_v27ng")
 
 [node name="GridContainer" type="GridContainer" parent="ScoreDisplay/MarginContainer"]
 layout_mode = 2
@@ -107,13 +110,26 @@ label_settings = SubResource("LabelSettings_vfj3b")
 
 [node name="btnNewGame" type="Button" parent="ScoreDisplay/MarginContainer/GridContainer"]
 layout_mode = 2
-theme = ExtResource("4_mlkvc")
+theme = ExtResource("4_jb8ck")
 text = "NOVA PARTIDA"
 
 [node name="btnExit" type="Button" parent="ScoreDisplay/MarginContainer/GridContainer"]
 layout_mode = 2
-theme = ExtResource("4_mlkvc")
+theme = ExtResource("4_jb8ck")
 text = "MENÚ"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_grle2")
+bus = &"Music"
+
+[node name="AudioStreamPlayerWin" type="AudioStreamPlayer" parent="."]
+process_mode = 2
+stream = ExtResource("6_mxqyj")
+bus = &"Music"
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_jn3qm")
+bus = &"Effects"
 
 [connection signal="pressed" from="ScoreDisplay/MarginContainer/GridContainer/btnNewGame" to="." method="_on_btn_new_game_pressed"]
 [connection signal="pressed" from="ScoreDisplay/MarginContainer/GridContainer/btnExit" to="." method="_on_btn_exit_pressed"]

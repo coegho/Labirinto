@@ -9,6 +9,7 @@ var flying_height: float
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_player = $Sprite2D/AnimationPlayer
 @onready var catching_area: Area2D = $CatchingArea
+@onready var chasing_sound = $ChasingSound
 
 var center_point: Vector2
 var rotating_path: Array = []
@@ -54,6 +55,7 @@ func chasing_process(delta):
 	if chased_player == null or is_player_in_town(chased_player.global_position):
 		chased_player = null
 		state = MeigaState.FLYING
+		chasing_sound.stop()
 		return
 	var move = chased_player.global_position - global_position
 	if move.x > 0:
@@ -82,6 +84,7 @@ func player_used_broom(player: Player):
 	if state == MeigaState.FLYING:
 		chased_player = player
 		state = MeigaState.CHASING
+		chasing_sound.play()
 
 func is_player_in_town(test_position: Vector2):
 	var space_state = get_world_2d().direct_space_state
@@ -100,6 +103,8 @@ enum MeigaState {
 func _on_catching_area_body_entered(body):
 	if body.has_method("is_protected") and body.is_protected():
 		state = MeigaState.FLYING
+		chasing_sound.stop()
 	elif body.has_method("being_catched"):
 		body.being_catched()
 		state = MeigaState.FLYING
+		chasing_sound.stop()

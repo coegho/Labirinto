@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsois3vh22rvg"]
+[gd_scene load_steps=8 format=3 uid="uid://bsois3vh22rvg"]
 
 [ext_resource type="Texture2D" uid="uid://yg2xahhd21ug" path="res://resources/sprites/meiga.png" id="1_0uqco"]
 [ext_resource type="Script" path="res://scenes/mobs/meiga.gd" id="1_6iiku"]
+[ext_resource type="AudioStream" uid="uid://co7227x0e6wti" path="res://resources/audio/sfx/sfx_05.mp3" id="3_h7xm4"]
 
 [sub_resource type="Animation" id="Animation_i3i7j"]
 resource_name = "fly_left"
@@ -142,5 +143,9 @@ monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CatchingArea"]
 shape = SubResource("CircleShape2D_aweyu")
+
+[node name="ChasingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_h7xm4")
+bus = &"Effects"
 
 [connection signal="body_entered" from="CatchingArea" to="." method="_on_catching_area_body_entered"]

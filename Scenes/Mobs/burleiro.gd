@@ -6,6 +6,7 @@ class_name Burleiro
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_player : AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var timer : Timer = $Timer
+@onready var failed_scare_sound = $FailedScareSound
 
 @export var speed : float = 150
 
@@ -43,6 +44,8 @@ func _on_area_2d_body_entered(body):
 		animation_player.play("scare")
 		if body.has_method("scare") and !body.is_protected():
 			body.scare()
+		else:
+			failed_scare_sound.play()
 		timer.start()
 
 

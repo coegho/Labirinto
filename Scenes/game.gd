@@ -5,6 +5,9 @@ class_name Game
 var score: Array[PlayerScore] = []
 
 @onready var score_display = $ScoreDisplay
+@onready var audio_player = $AudioStreamPlayer
+@onready var audio_player_win = $AudioStreamPlayerWin
+@onready var audio_collect = $CollectSound
 var level
 
 var number_of_players: int
@@ -51,6 +54,7 @@ func new_game():
 	level.player_catched.connect(_on_level_player_catched)
 	level.all_herbs_collected.connect(_on_level_all_herbs_collected)
 	get_tree().paused = false
+	audio_player.play()
 
 func _on_level_player_catched(player_number):
 	score[player_number-1].catched_points = score[player_number-1].catched_points - 1
@@ -58,9 +62,12 @@ func _on_level_player_catched(player_number):
 
 func _on_level_herb_collected(player_number):
 	score[player_number-1].herb_points = score[player_number-1].herb_points + 1
+	audio_collect.play()
 
 
 func _on_level_all_herbs_collected():
+	get_tree().paused = true
+	audio_player_win.play()
 	for player in [0,1]:
 		grid_container.columns = number_of_players + 1
 		var visible_data = number_of_players > player

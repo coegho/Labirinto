@@ -8,6 +8,7 @@ class_name Urco
 @onready var animation_player = $Sprite2D/AnimationPlayer
 @onready var sight = $Sight
 @onready var timer = $RecoverTimer
+@onready var growl_sound = $GrowlSound
 
 var pending_path: Array = []
 
@@ -30,6 +31,7 @@ func attack_mode(delta):
 	var move = target - global_position
 	if move.is_zero_approx():
 		current_state = urco_states.WAIT
+		growl_sound.stop()
 		pending_path = []
 		timer.start()
 	if move.x > 0:
@@ -46,6 +48,7 @@ func attack_mode(delta):
 	var collision = move_and_collide(move)
 	if collision != null:
 		current_state = urco_states.WAIT
+		growl_sound.stop()
 		pending_path = []
 		timer.start()
 	
@@ -56,6 +59,7 @@ func walk_mode(delta):
 		return player.has_method("is_protected") and !player.is_protected())
 	if !visible_players.is_empty():
 		current_state = urco_states.ATTACK
+		growl_sound.play()
 		target = visible_players[0].global_position
 		return
 	
@@ -91,3 +95,4 @@ enum urco_states {
 
 func _on_recover_timer_timeout():
 	current_state = urco_states.WALK
+	growl_sound.stop()

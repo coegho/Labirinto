@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="As Herbas de San Xoán"
+config/name_localized={
+"en": "Saint John's Herbs"
+}
 run/main_scene="res://scenes/root.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://logo.png"
 
 [autoload]
 
 PathfinderManager="*res://pathfinder_manager.gd"
+SettingsManager="*res://settings_manager.gd"
 
 [display]
 

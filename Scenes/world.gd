@@ -2,13 +2,13 @@ extends Node2D
 
 class_name World
 
-@export var player_scene: PackedScene = preload("res://Scenes/player.tscn")
-@export var town_scene: PackedScene
-@export var companha_scene: PackedScene
-@export var urco_scene: PackedScene
-@export var cross_scene: PackedScene
-@export var burleiro_scene: PackedScene
-@export var meiga_scene: PackedScene
+const player_scene: PackedScene = preload("res://Scenes/player.tscn")
+const town_scene: PackedScene = preload("res://scenes/town.tscn")
+const companha_scene: PackedScene = preload("res://scenes/mobs/companha.tscn")
+const urco_scene: PackedScene = preload("res://scenes/mobs/urco.tscn")
+const cross_scene: PackedScene = preload("res://scenes/cross.tscn")
+const burleiro_scene: PackedScene = preload("res://scenes/mobs/burleiro.tscn")
+const meiga_scene: PackedScene = preload("res://scenes/mobs/meiga.tscn")
 
 @export var herb_scene: PackedScene
 @export var vacaloura_scene: PackedScene
@@ -53,7 +53,14 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 		var urco = instantiate_entity(urco_scene, crossings.pick_random())
 		urco.crossings = crossings
 	
-	var pos: Array = get_final_item_positions(item_positions, 6)
+	#segundo urco
+	if crossings.size() > 2:
+		var urco = instantiate_entity(urco_scene, crossings.pick_random())
+		urco.crossings = crossings
+	
+	#items
+	var pos: Array = get_final_item_positions(item_positions, 7)
+	pos = pos.map(func (p): return p + Vector2.UP * 8)
 	for i in range(3):
 		var item_position = pos[i]
 		var salt : Salt = instantiate_entity(salt_scene, item_position)
@@ -70,6 +77,10 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 	var center = Vector2((maze.MAZE_WIDTH+1)*32, (maze.MAZE_HEIGHT+1)*32)
 	var meiga : Meiga = instantiate_entity(meiga_scene, center)
 	
+	vasoira.used_broom.connect(meiga.player_used_broom)
+	
+	#segunda vasoira
+	vasoira = instantiate_entity(vasoira_scene, pos[6])
 	vasoira.used_broom.connect(meiga.player_used_broom)
 	
 	var total_herbs = 0
