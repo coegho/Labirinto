@@ -1,0 +1,112 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvcxwufkf83hd"]
+
+[ext_resource type="Script" path="res://scenes/audio_controller.gd" id="1_ihnhr"]
+[ext_resource type="Texture2D" uid="uid://m4txxi54jm1y" path="res://resources/sprites/gear.png" id="1_q5llv"]
+
+[node name="AudioController" type="CanvasLayer"]
+script = ExtResource("1_ihnhr")
+
+[node name="AudioButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.8)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_bottom = 72.0
+grow_horizontal = 0
+focus_mode = 0
+toggle_mode = true
+icon = ExtResource("1_q5llv")
+flat = true
+
+[node name="AudioPanel" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 135.0
+offset_right = 535.0
+offset_bottom = 100.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="AudioPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.988235)
+
+[node name="MarginContainer2" type="MarginContainer" parent="AudioPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AudioPanel/MarginContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AudioPanel/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelVolumeMaster" type="Label" parent="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Master"
+
+[node name="VolumeMasterSlider" type="HSlider" parent="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="AudioPanel/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelVolumeMusic" type="Label" parent="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Música"
+
+[node name="VolumeMusicSlider" type="HSlider" parent="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="AudioPanel/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+
+[node name="LabelVolumeEffects" type="Label" parent="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Efectos"
+
+[node name="VolumeEffectsSlider" type="HSlider" parent="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[connection signal="toggled" from="AudioButton" to="." method="_on_audio_button_toggled"]
+[connection signal="drag_ended" from="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer/VolumeMasterSlider" to="." method="_on_volume_master_slider_drag_ended"]
+[connection signal="drag_ended" from="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer2/VolumeMusicSlider" to="." method="_on_volume_music_slider_drag_ended"]
+[connection signal="drag_ended" from="AudioPanel/MarginContainer2/VBoxContainer/HBoxContainer3/VolumeEffectsSlider" to="." method="_on_volume_effects_slider_drag_ended"]

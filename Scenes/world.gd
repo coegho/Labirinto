@@ -60,7 +60,7 @@ func instantiate_entities(starting_point: Vector2, dead_ends: Array, crossings: 
 	
 	#items
 	var pos: Array = get_final_item_positions(item_positions, 7)
-	pos = pos.map(func (p): return p + Vector2.UP * 8)
+	pos = pos.map(func (p): return p + (Vector2.UP + Vector2.LEFT) * 8)
 	for i in range(3):
 		var item_position = pos[i]
 		var salt : Salt = instantiate_entity(salt_scene, item_position)
