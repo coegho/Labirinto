@@ -3,12 +3,13 @@ extends Node2D
 @onready var current_menu = $CurrentMenu
 @onready var audio_player = $AudioStreamPlayer
 
-const menus: Dictionary = {
-	"main_menu": preload("res://Scenes/Menus/main_menu.tscn"),
-	"instructions_menu": preload("res://Scenes/Menus/instructions_menu.tscn"),
-	"credits_menu": preload("res://Scenes/Menus/credits_menu.tscn"),
-	"controls_menu": preload("res://Scenes/Menus/controls_menu.tscn"),
-}
+@export var main_menu_scene: PackedScene
+@export var instructions_menu_scene: PackedScene
+@export var credits_menu_scene: PackedScene
+@export var controls_menu_scene: PackedScene
+@export var game_scene: PackedScene
+
+var menus: Dictionary
 
 func show_main_menu() -> MainMenu:
 	var menu: MainMenu = switch_menu("main_menu")
@@ -21,7 +22,7 @@ func show_main_menu() -> MainMenu:
 func load_game(number_of_players):
 	for children in current_menu.get_children():
 		children.queue_free()
-	var game = preload("res://Scenes/game.tscn").instantiate()
+	var game = game_scene.instantiate()
 	game.number_of_players = number_of_players
 	game.go_to_menu_pressed.connect(_on_return_to_menu_pressed)
 	audio_player.stop()
@@ -43,6 +44,12 @@ func switch_menu(menu_name: String):
 	return load_menu(menu_name)
 
 func _ready():
+	menus = {
+		"main_menu": main_menu_scene,
+		"instructions_menu": instructions_menu_scene,
+		"credits_menu": credits_menu_scene,
+		"controls_menu": controls_menu_scene,
+	}
 	SettingsManager.load_settings()
 	current_menu.add_child(show_main_menu())
 

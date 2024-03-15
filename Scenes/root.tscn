@@ -1,11 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuxyr3e4nh2bb"]
+[gd_scene load_steps=9 format=3 uid="uid://cuxyr3e4nh2bb"]
 
 [ext_resource type="Script" path="res://scenes/root.gd" id="1_c0suj"]
 [ext_resource type="AudioStream" uid="uid://b8bm60pcgdm0g" path="res://resources/audio/bgm/bg_03.mp3" id="2_a36v6"]
+[ext_resource type="PackedScene" uid="uid://ce6wnsowsbavg" path="res://scenes/menus/main_menu.tscn" id="2_byx1o"]
 [ext_resource type="PackedScene" uid="uid://cvcxwufkf83hd" path="res://scenes/audio_controller.tscn" id="3_j7pt6"]
+[ext_resource type="PackedScene" uid="uid://cfkmqtnuken2g" path="res://scenes/menus/instructions_menu.tscn" id="3_lm65n"]
+[ext_resource type="PackedScene" uid="uid://cgwn3ymqt268t" path="res://scenes/menus/credits_menu.tscn" id="4_yhnvs"]
+[ext_resource type="PackedScene" uid="uid://bgxjtugvdjfrh" path="res://scenes/menus/controls_menu.tscn" id="5_ouv7o"]
+[ext_resource type="PackedScene" uid="uid://dc7ljxplt4bui" path="res://scenes/game.tscn" id="6_22eqx"]
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_c0suj")
+main_menu_scene = ExtResource("2_byx1o")
+instructions_menu_scene = ExtResource("3_lm65n")
+credits_menu_scene = ExtResource("4_yhnvs")
+controls_menu_scene = ExtResource("5_ouv7o")
+game_scene = ExtResource("6_22eqx")
 
 [node name="CurrentMenu" type="Node2D" parent="."]
 

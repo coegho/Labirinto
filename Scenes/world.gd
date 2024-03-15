@@ -2,13 +2,13 @@ extends Node2D
 
 class_name World
 
-const player_scene: PackedScene = preload("res://Scenes/player.tscn")
-const town_scene: PackedScene = preload("res://scenes/town.tscn")
-const companha_scene: PackedScene = preload("res://scenes/mobs/companha.tscn")
-const urco_scene: PackedScene = preload("res://scenes/mobs/urco.tscn")
-const cross_scene: PackedScene = preload("res://scenes/cross.tscn")
-const burleiro_scene: PackedScene = preload("res://scenes/mobs/burleiro.tscn")
-const meiga_scene: PackedScene = preload("res://scenes/mobs/meiga.tscn")
+@export var player_scene: PackedScene
+@export var town_scene: PackedScene
+@export var companha_scene: PackedScene
+@export var urco_scene: PackedScene
+@export var cross_scene: PackedScene
+@export var burleiro_scene: PackedScene
+@export var meiga_scene: PackedScene
 
 @export var herb_scene: PackedScene
 @export var vacaloura_scene: PackedScene

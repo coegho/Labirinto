@@ -1,9 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://b0ondiaqe1ynl"]
+[gd_scene load_steps=22 format=3 uid="uid://b0ondiaqe1ynl"]
 
 [ext_resource type="Script" path="res://scenes/level.gd" id="1_jsep0"]
 [ext_resource type="Script" path="res://scenes/split_subviewport.gd" id="2_c3ljc"]
 [ext_resource type="Script" path="res://scenes/world.gd" id="3_7iiui"]
+[ext_resource type="PackedScene" uid="uid://2m52enh5ssl" path="res://scenes/town.tscn" id="5_lkpil"]
+[ext_resource type="PackedScene" uid="uid://bc0wuhq18luuo" path="res://scenes/mobs/companha.tscn" id="6_nmu50"]
+[ext_resource type="PackedScene" uid="uid://8af37kayo22p" path="res://scenes/mobs/urco.tscn" id="7_rr2ol"]
+[ext_resource type="PackedScene" uid="uid://ctt14l48jkioy" path="res://scenes/cross.tscn" id="8_rfbei"]
+[ext_resource type="PackedScene" uid="uid://bu6151m4txtq0" path="res://scenes/mobs/burleiro.tscn" id="9_gtv71"]
 [ext_resource type="PackedScene" uid="uid://b2jk5p3sjicu3" path="res://scenes/items/herb.tscn" id="10_63nys"]
+[ext_resource type="PackedScene" uid="uid://bsois3vh22rvg" path="res://scenes/mobs/meiga.tscn" id="10_wfg33"]
 [ext_resource type="PackedScene" uid="uid://b3mv6hjffjrn8" path="res://scenes/items/vacaloura.tscn" id="11_2v0xr"]
 [ext_resource type="PackedScene" uid="uid://caod3elqkhklb" path="res://scenes/items/salt.tscn" id="12_437i1"]
 [ext_resource type="PackedScene" uid="uid://51byldyhucnv" path="res://scenes/items/vasoira.tscn" id="13_fave8"]
@@ -689,6 +695,13 @@ script = ExtResource("2_c3ljc")
 [node name="World" type="Node2D" parent="CanvasLayer/HBoxContainer/SubViewportContainer1/Viewport1"]
 y_sort_enabled = true
 script = ExtResource("3_7iiui")
+player_scene = ExtResource("17_u1kv3")
+town_scene = ExtResource("5_lkpil")
+companha_scene = ExtResource("6_nmu50")
+urco_scene = ExtResource("7_rr2ol")
+cross_scene = ExtResource("8_rfbei")
+burleiro_scene = ExtResource("9_gtv71")
+meiga_scene = ExtResource("10_wfg33")
 herb_scene = ExtResource("10_63nys")
 vacaloura_scene = ExtResource("11_2v0xr")
 salt_scene = ExtResource("12_437i1")
