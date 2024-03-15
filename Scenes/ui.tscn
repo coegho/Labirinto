@@ -5,31 +5,31 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ywvvn"]
 atlas = ExtResource("1_1vt1v")
-region = Rect2(0, 0, 10, 10)
+region = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ltvtd"]
 atlas = ExtResource("1_1vt1v")
-region = Rect2(10, 0, 10, 10)
+region = Rect2(12, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t7dvp"]
 atlas = ExtResource("1_1vt1v")
-region = Rect2(20, 0, 10, 10)
+region = Rect2(24, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpjus"]
 atlas = ExtResource("1_1vt1v")
-region = Rect2(0, 10, 10, 10)
+region = Rect2(0, 12, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k05oh"]
 atlas = ExtResource("1_1vt1v")
-region = Rect2(10, 10, 10, 10)
+region = Rect2(12, 12, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6vbe"]
 atlas = ExtResource("1_1vt1v")
-region = Rect2(20, 10, 10, 10)
+region = Rect2(24, 12, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75h2y"]
 atlas = ExtResource("1_1vt1v")
-region = Rect2(0, 20, 10, 10)
+region = Rect2(0, 24, 12, 12)
 
 [node name="Control" type="Control"]
 layout_mode = 3

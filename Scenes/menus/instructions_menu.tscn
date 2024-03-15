@@ -30,7 +30,7 @@ region = Rect2(32, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vm850"]
 atlas = ExtResource("3_vaer0")
-region = Rect2(0, 0, 10, 10)
+region = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0pmv"]
 atlas = ExtResource("5_isvem")
@@ -38,7 +38,7 @@ region = Rect2(0, 0, 11, 13)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4hh45"]
 atlas = ExtResource("6_f37jy")
-region = Rect2(0, 0, 14, 14)
+region = Rect2(0, 0, 16, 14)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gheaf"]
 atlas = ExtResource("7_5ntup")

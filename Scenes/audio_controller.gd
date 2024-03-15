@@ -11,11 +11,6 @@ func _ready():
 	volume_effects_slider.value = SettingsManager.user_preferences.sfx_audio_level
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_audio_button_toggled(toggled_on):
 	audio_panel.visible = toggled_on
 

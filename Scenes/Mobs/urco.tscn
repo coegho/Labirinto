@@ -162,6 +162,7 @@ script = ExtResource("1_67mvg")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_l7e1m")
 hframes = 5
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
